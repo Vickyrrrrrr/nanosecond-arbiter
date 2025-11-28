@@ -30,9 +30,10 @@
 ║                    BENCHMARK RESULTS                         ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  📦 Orders Processed      │  1,000,000                       ║
-║  ⏱️  Total Time           │  0.020 seconds                   ║
-║  🚀 Throughput            │  51,081,393 orders/second        ║
-║  ⚡ Latency per Order     │  19 nanoseconds                  ║
+║  ⏱️  Total Time           │  0.030 seconds                   ║
+║  🚀 Throughput            │  33,543,877 orders/second        ║
+║  ⚡ Ring Buffer Latency   │  12 nanoseconds (Transport)      ║
+║  🔥 Full Engine Latency   │  29 nanoseconds (Matching)       ║
 ║  🏆 Performance Tier      │  PRODUCTION-GRADE HFT            ║
 ╚══════════════════════════════════════════════════════════════╝
 ```
