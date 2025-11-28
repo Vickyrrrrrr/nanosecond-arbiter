@@ -157,8 +157,8 @@ MIT License - feel free to use this in your own projects!
 Built as a portfolio project to demonstrate low-latency systems engineering skills.
 
 **Connect with me:**
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- LinkedIn: [Your Name](https://linkedin.com/in/YOUR_PROFILE)
+- GitHub: [@Vickyrrrrrr](https://github.com/Vickyrrrrrr)
+- LinkedIn: [Connect on LinkedIn](https://linkedin.com/in/YOUR_PROFILE)
 
 ## 🙏 Acknowledgments
 
