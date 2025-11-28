@@ -73,6 +73,24 @@ rustc matching_engine.rs -O
 ./matching_engine  # or matching_engine.exe on Windows
 ```
 
+## 🎯 Example Projects
+
+Want to see how this works for different use cases? Check out the **[examples/](examples/)** directory!
+
+### 🎥 Video Processing
+```bash
+cargo run --release --bin video_processing
+```
+Demonstrates: Camera → Encoder pipeline at 60 FPS with zero frame drops
+
+### 🌡️ IoT Sensor Network
+```bash
+cargo run --release --bin iot_sensors
+```
+Demonstrates: 10 sensors at 100 Hz collecting temperature, humidity, and pressure data
+
+**See [examples/README.md](examples/README.md) for more details and how to adapt these for your own projects!**
+
 ## 📖 What You'll Learn
 
 This project demonstrates:

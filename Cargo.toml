@@ -8,6 +8,18 @@ edition = "2021"
 # Perfect for HFT because it avoids mutex overhead
 rtrb = "0.3"
 
+[[bin]]
+name = "hft_ringbuffer"
+path = "src/main.rs"
+
+[[bin]]
+name = "video_processing"
+path = "examples/video_processing.rs"
+
+[[bin]]
+name = "iot_sensors"
+path = "examples/iot_sensors.rs"
+
 [profile.release]
 # Aggressive optimizations for HFT performance
 opt-level = 3           # Maximum optimization
