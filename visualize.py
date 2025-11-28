@@ -39,14 +39,35 @@ class VisualizationGenerator:
     def _check_ffmpeg(self) -> bool:
         """Check if FFmpeg is available"""
         import subprocess
+        import os
+        import glob
+        
+        # 1. Check PATH
         try:
             subprocess.run(['ffmpeg', '-version'], capture_output=True, timeout=2)
-            print("✅ FFmpeg detected - will generate MP4 videos")
+            print("✅ FFmpeg detected in PATH - will generate MP4 videos")
+            self.ffmpeg_cmd = 'ffmpeg'
             return True
         except:
-            print("⚠️  FFmpeg not found - will generate GIF animations instead")
-            print("   To install FFmpeg: winget install ffmpeg")
-            return False
+            pass
+            
+        # 2. Check Winget location (Windows)
+        try:
+            local_app_data = os.environ.get('LOCALAPPDATA', '')
+            if local_app_data:
+                pattern = os.path.join(local_app_data, r"Microsoft\WinGet\Packages\Gyan.FFmpeg*\*\bin\ffmpeg.exe")
+                matches = glob.glob(pattern)
+                if matches:
+                    self.ffmpeg_cmd = matches[0]
+                    print(f"✅ FFmpeg detected (Winget) - will generate MP4 videos")
+                    return True
+        except:
+            pass
+
+        print("⚠️  FFmpeg not found - will generate GIF animations instead")
+        print("   To install FFmpeg: winget install ffmpeg")
+        self.ffmpeg_cmd = None
+        return False
     
     def _load_data(self) -> Dict:
         """Load benchmark data from JSON"""
@@ -126,6 +147,7 @@ class VisualizationGenerator:
         # Save as GIF or MP4
         if self.use_ffmpeg:
             output_path = self.output_dir / "latency_distribution.mp4"
+            plt.rcParams['animation.ffmpeg_path'] = self.ffmpeg_cmd
             Writer = animation.writers['ffmpeg']
             writer = Writer(fps=30, metadata=dict(artist='HFT Visualizer'), bitrate=3000)
             anim.save(output_path, writer=writer)
@@ -310,6 +332,7 @@ class VisualizationGenerator:
         # Save as GIF or MP4
         if self.use_ffmpeg:
             output_path = self.output_dir / "orderbook_depth.mp4"
+            plt.rcParams['animation.ffmpeg_path'] = self.ffmpeg_cmd
             Writer = animation.writers['ffmpeg']
             writer = Writer(fps=30, metadata=dict(artist='HFT Visualizer'), bitrate=3000)
             anim.save(output_path, writer=writer)
