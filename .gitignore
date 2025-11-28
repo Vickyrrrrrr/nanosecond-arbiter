@@ -1,1 +1,17 @@
 /target
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+
+# Benchmark temporary files
+benchmark_output.txt
+benchmark_data.json
+
+# OS
+.DS_Store
+Thumbs.db
