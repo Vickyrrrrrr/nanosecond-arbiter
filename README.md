@@ -158,7 +158,7 @@ Built as a portfolio project to demonstrate low-latency systems engineering skil
 
 **Connect with me:**
 - GitHub: [@Vickyrrrrrr](https://github.com/Vickyrrrrrr)
-- LinkedIn: [Connect on LinkedIn](https://linkedin.com/in/YOUR_PROFILE)
+- LinkedIn: [Vicky Nishad](https://www.linkedin.com/in/vicky-nishad-117855369/)
 
 ## 🙏 Acknowledgments
 
