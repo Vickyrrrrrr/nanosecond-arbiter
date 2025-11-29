@@ -20,6 +20,14 @@ path = "examples/video_processing.rs"
 name = "iot_sensors"
 path = "examples/iot_sensors.rs"
 
+[[bin]]
+name = "game_engine"
+path = "examples/game_engine.rs"
+
+[[bin]]
+name = "audio_processing"
+path = "examples/audio_processing.rs"
+
 [profile.release]
 # Aggressive optimizations for HFT performance
 opt-level = 3           # Maximum optimization

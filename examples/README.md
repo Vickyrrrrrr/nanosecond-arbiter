@@ -56,12 +56,59 @@ rustc examples/iot_sensors.rs --edition 2021 -O
 
 ---
 
-## 🎮 Coming Soon
+---
 
-More examples in development:
-- **Game Engine**: Game logic → Render thread communication
-- **Audio Processing**: Real-time audio effects pipeline
-- **Network Processing**: High-speed packet handling
+## 🎮 Example 3: Game Engine
+
+**File:** `game_engine.rs`
+
+**Use Case:** Separating game logic from rendering for smooth 144+ FPS gameplay
+
+**What it demonstrates:**
+- Logic thread → Render thread pipeline
+- Processing 100 game objects per frame
+- Physics simulation and AI processing
+- Maintaining target frame rate (144 FPS)
+- Zero frame stuttering
+
+**Run it:**
+```bash
+cargo run --release --bin game_engine
+```
+
+**Real-world applications:**
+- AAA game engines (Unreal, Unity, custom engines)
+- Real-time simulations (physics, fluid dynamics)
+- VR/AR applications (low latency critical)
+- Graphics applications (3D modeling, CAD)
+
+---
+
+## 🎵 Example 4: Audio Processing
+
+**File:** `audio_processing.rs`
+
+**Use Case:** Real-time audio effects chain for music production and live performance
+
+**What it demonstrates:**
+- Audio input → Effects processor pipeline
+- 48 kHz sample rate processing
+- Real-time effects (compression, delay, reverb)
+- Stereo audio processing
+- Real-time factor calculation
+
+**Run it:**
+```bash
+cargo run --release --bin audio_processing
+```
+
+**Real-world applications:**
+- Digital Audio Workstations (DAWs like Ableton, FL Studio)
+- Audio plugins (VST, AU, AAX)
+- Live performance systems
+- Streaming software (OBS, Streamlabs)
+- VoIP applications (Discord, Zoom)
+- Music production software
 
 ---
 

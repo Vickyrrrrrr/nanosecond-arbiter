@@ -15,7 +15,7 @@
 [![GitHub Forks](https://img.shields.io/github/forks/Vickyrrrrrr/nanosecond-arbiter?style=social)](https://github.com/Vickyrrrrrr/nanosecond-arbiter/network/members)
 [![GitHub Watchers](https://img.shields.io/github/watchers/Vickyrrrrrr/nanosecond-arbiter?style=social)](https://github.com/Vickyrrrrrr/nanosecond-arbiter/watchers)
 
-[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🎯 Examples](#-example-projects) • [💡 Use Cases](#-can-i-use-this-for-my-own-projects) • [🤝 Contributing](#-contributing)
+[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🎯 Examples](#-example-projects) • [💡 Use Cases](#-can-i-use-this-for-my-own-projects) • [🤝 Contributing](#-contributing) • [🎮 Game Engine](#-example-3-game-engine) • [🎵 Audio Processing](#-example-4-audio-processing)
 
 </div>
 
@@ -246,6 +246,48 @@ cargo run --release --bin iot_sensors
 
 </td>
 </tr>
+<tr>
+<td width="50%">
+
+### 🎮 **Game Engine**
+
+```bash
+cargo run --release --bin game_engine
+```
+
+**Demonstrates:**
+- Logic → Render thread at 144 FPS
+- 100 game objects per frame
+- Physics + AI simulation
+
+**Use Cases:**
+- Game engines (Unreal, Unity)
+- Real-time simulations
+- VR/AR applications
+- Graphics software
+
+</td>
+<td width="50%">
+
+### 🎵 **Audio Processing**
+
+```bash
+cargo run --release --bin audio_processing
+```
+
+**Demonstrates:**
+- Real-time effects chain (48 kHz)
+- Compression, delay, reverb
+- Stereo audio processing
+
+**Use Cases:**
+- DAWs (Ableton, FL Studio)
+- Audio plugins (VST, AU)
+- Live performance systems
+- Streaming software
+
+</td>
+</tr>
 </table>
 
 <div align="center">
@@ -458,7 +500,7 @@ This architecture is used in:
 ### ✅ **Completed**
 - [x] Phase 1: Matching Engine
 - [x] Phase 2: Lock-Free Ring Buffer
-- [x] Working Examples (Video, IoT)
+- [x] Working Examples (Video, IoT, Game, Audio)
 - [x] Comprehensive Documentation
 - [x] Performance Benchmarks
 
@@ -468,7 +510,7 @@ This architecture is used in:
 ### 🚧 **In Progress**
 - [ ] GitHub Actions CI/CD
 - [ ] Performance graphs
-- [ ] More examples (Game, Audio)
+- [ ] More examples (Network)
 
 </td>
 <td>
