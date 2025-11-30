@@ -7,26 +7,18 @@ edition = "2021"
 # rtrb: Real-Time Ring Buffer - Lock-free SPSC queue
 # Perfect for HFT because it avoids mutex overhead
 rtrb = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+crossbeam-channel = "0.5"
+tiny_http = "0.12"
 
 [[bin]]
 name = "hft_ringbuffer"
 path = "src/main.rs"
 
 [[bin]]
-name = "video_processing"
-path = "examples/video_processing.rs"
-
-[[bin]]
-name = "iot_sensors"
-path = "examples/iot_sensors.rs"
-
-[[bin]]
-name = "game_engine"
-path = "examples/game_engine.rs"
-
-[[bin]]
-name = "audio_processing"
-path = "examples/audio_processing.rs"
+name = "benchmark"
+path = "src/benchmark.rs"
 
 [profile.release]
 # Aggressive optimizations for HFT performance

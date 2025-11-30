@@ -3,145 +3,100 @@
 // ============================================================================
 
 mod matching_engine;
-use matching_engine::{Order, OrderBook, OrderSide};
+use matching_engine::{Order, OrderBook, OrderSide, Packet};
 use std::thread;
 use std::time::Instant;
 
 // ============================================================================
 // PACKET STRUCTURE - The Protocol
 // ============================================================================
-
-#[derive(Debug, Clone)]
-struct Packet {
-    order: Order,
-}
-
-impl Packet {
-    fn new(order: Order) -> Self {
-        Packet { order }
-    }
-}
+// Packet moved to matching_engine.rs
 
 // ============================================================================
 // MAIN - The SPSC Pipeline Benchmark
 // ============================================================================
 
-fn main() {
-    println!("🚀 LOCK-FREE RING BUFFER + MATCHING ENGINE BENCHMARK");
+mod gateway;
+mod http_server;
+use gateway::run_gateway;
+use http_server::start_http_server;
+use std::sync::{Arc, Mutex};
+
+// ============================================================================
+// MAIN - Production Trading Platform
+// ============================================================================
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    println!("🚀 NANOSECOND ARBITER - PRODUCTION MODE");
     println!("============================================================\n");
     
     // Configuration
-    const TOTAL_ORDERS: u64 = 1_000_000;
-    const RING_BUFFER_CAPACITY: usize = 1024;
+    const RING_BUFFER_CAPACITY: usize = 4096;
     
     println!("📊 Configuration:");
-    println!("   • Total Orders: 1,000,000");
     println!("   • Ring Buffer Capacity: {}", RING_BUFFER_CAPACITY);
-    println!("   • Architecture: SPSC (Single-Producer Single-Consumer)");
-    println!("   • Logic: FULL OrderBook Execution (BTreeMap Insert/Match)");
+    println!("   • Architecture: Web UI + TCP Gateway -> Ring Buffer -> Engine");
     println!();
     
-    let (mut producer, mut consumer) = rtrb::RingBuffer::<Packet>::new(RING_BUFFER_CAPACITY);
+    let (producer, mut consumer) = rtrb::RingBuffer::<Packet>::new(RING_BUFFER_CAPACITY);
+    
+    // Shared order book for HTTP API access
+    let order_book = Arc::new(Mutex::new(OrderBook::new()));
+    let order_book_engine = order_book.clone();
+    let order_book_http = order_book.clone();
     
     println!("✅ Ring buffer initialized\n");
     
     // ========================================================================
-    // THREAD 1: THE MARKET (Producer)
+    // THREAD 1: MATCHING ENGINE (Consumer)
     // ========================================================================
     
-    let producer_handle = thread::spawn(move || {
-        println!("🏭 [PRODUCER] Market simulator started...");
+    thread::spawn(move || {
+        println!("⚙️  [ENGINE] Matching engine started on dedicated thread...");
         
-        let mut orders_sent = 0u64;
-        
-        for i in 0..TOTAL_ORDERS {
-            // Create a dummy order
-            // We alternate buy/sell to create matches and keep the book size manageable
-            let side = if i % 2 == 0 { OrderSide::Buy } else { OrderSide::Sell };
-            // Price oscillates to create matches
-            let price = 10000 + (i % 10); 
-            
-            let order = Order {
-                id: i,
-                side,
-                price, 
-                quantity: 100,
-            };
-            
-            let packet = Packet::new(order);
-            
-            loop {
-                match producer.push(packet.clone()) {
-                    Ok(_) => {
-                        orders_sent += 1;
-                        break;
-                    }
-                    Err(_) => {
-                        thread::yield_now();
-                    }
-                }
-            }
-        }
-        println!("🏭 [PRODUCER] Finished sending {} orders", orders_sent);
-    });
-    
-    // ========================================================================
-    // THREAD 2: THE ENGINE (Consumer)
-    // ========================================================================
-    
-    let consumer_handle = thread::spawn(move || {
-        println!("⚙️  [CONSUMER] Matching engine started...");
-        
-        // Initialize the ACTUAL OrderBook
-        let mut order_book = OrderBook::new();
-        
-        let mut orders_processed = 0u64;
-        let start_time = Instant::now();
-        
-        while orders_processed < TOTAL_ORDERS {
+        loop {
             match consumer.pop() {
                 Ok(packet) => {
-                    // ACTUALLY PROCESS THE ORDER
-                    order_book.add_limit_order(packet.order);
+                    // Process order and get executions
+                    let executions = {
+                        let mut book = order_book_engine.lock().unwrap();
+                        book.add_limit_order(packet.order)
+                    };
                     
-                    orders_processed += 1;
-                    
-                    if orders_processed % 100_000 == 0 {
-                        println!("⚙️  [CONSUMER] Processed {} orders...", orders_processed);
+                    // Print trade executions
+                    for exec in executions {
+                        println!("💰 TRADE: {} matched with {} @ {} (Qty: {})", 
+                            exec.taker_order_id, exec.maker_order_id, exec.price, exec.quantity);
                     }
                 }
                 Err(_) => {
-                    thread::yield_now();
+                    // Busy wait
+                    std::hint::spin_loop();
                 }
             }
         }
-        
-        let elapsed = start_time.elapsed();
-        println!("⚙️  [CONSUMER] Finished processing {} orders", orders_processed);
-        (orders_processed, elapsed)
     });
     
     // ========================================================================
-    // WAIT FOR COMPLETION & CALCULATE METRICS
+    // THREAD 2: TCP GATEWAY (Producer)
     // ========================================================================
     
-    println!("\n⏳ Processing orders...\n");
+    thread::spawn(move || {
+        println!("🌐 [GATEWAY] TCP server starting...");
+        if let Err(e) = run_gateway(producer) {
+            eprintln!("❌ [GATEWAY] Error: {}", e);
+        }
+    });
     
-    producer_handle.join().expect("Producer thread panicked");
-    let (orders_processed, elapsed) = consumer_handle.join().expect("Consumer thread panicked");
+    // ========================================================================
+    // MAIN THREAD: HTTP SERVER + WEB DASHBOARD
+    // ========================================================================
     
-    println!("\n🎯 BENCHMARK RESULTS (WITH LOGIC)");
-    println!("============================================================");
+    println!("🌐 [HTTP] Starting web dashboard...");
+    println!("📱 Open http://localhost:8082 in your browser\n");
     
-    let elapsed_secs = elapsed.as_secs_f64();
-    let elapsed_nanos = elapsed.as_nanos();
-    let throughput = orders_processed as f64 / elapsed_secs;
-    let latency_per_order = elapsed_nanos / orders_processed as u128;
+    start_http_server(order_book_http)?;
     
-    println!("📦 Orders Processed: {}", orders_processed);
-    println!("⏱️  Total Time: {:.3} seconds", elapsed_secs);
-    println!("🚀 Throughput: {:.0} orders/second", throughput);
-    println!("⚡ Latency per Order: {} ns", latency_per_order);
-    println!();
+    Ok(())
 }
 

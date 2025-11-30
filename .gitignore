@@ -1,12 +1,21 @@
-/target
+# Rust
+/target/
+Cargo.lock
 
 # Python
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
 .venv/
 venv/
 *.egg-info/
+
+# Performance data (contains potentially sensitive info)
+performance_*.json
+
+# IDE
+.vscode/
+.idea/
+*$py.class
 
 # Benchmark temporary files
 benchmark_output.txt
