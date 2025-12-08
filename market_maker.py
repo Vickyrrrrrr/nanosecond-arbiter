@@ -22,9 +22,17 @@ from urllib.parse import urlencode
 # CONFIGURATION
 # ============================================================================
 
-# Binance API Configuration
-USE_TESTNET = True  # Set to False for real trading (DANGEROUS!)
+# Import API keys from config.py (not tracked by git)
+try:
+    from config import API_KEY, API_SECRET, USE_TESTNET
+except ImportError:
+    # Fallback if config.py doesn't exist
+    import os
+    API_KEY = os.getenv("BINANCE_API_KEY", "YOUR_BINANCE_API_KEY_HERE")
+    API_SECRET = os.getenv("BINANCE_API_SECRET", "YOUR_BINANCE_API_SECRET_HERE")
+    USE_TESTNET = True  # Default to testnet for safety
 
+# Binance API Configuration
 if USE_TESTNET:
     BASE_URL = "https://testnet.binance.vision"
     WS_URL = "wss://testnet.binance.vision/ws"
@@ -33,10 +41,6 @@ else:
     BASE_URL = "https://api.binance.com"
     WS_URL = "wss://stream.binance.com:9443/ws"
     print("💰 LIVE MODE - Using REAL money!")
-
-# YOUR API KEYS (Get from Binance)
-API_KEY = "YOUR_BINANCE_API_KEY_HERE"  # Replace with your actual API key
-API_SECRET = "YOUR_BINANCE_API_SECRET_HERE"  # Replace with your actual API secret
 
 # Trading Configuration
 SYMBOL = "BTCUSDT"

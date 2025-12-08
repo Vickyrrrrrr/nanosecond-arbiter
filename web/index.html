@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nanosecond Arbiter AI Arena | Live Trading</title>
+    <meta name="description" content="AI-powered trading with ultra-low latency execution">
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Nanosecond Arbiter</span>
+            </div>
+            <span class="badge badge-live">AI Arena</span>
+        </div>
+        <div class="header-right">
+            <div class="engine-status">
+                <span class="status-dot"></span>
+                <span>Rust SPSC Engine Active</span>
+            </div>
+            <div class="latency-badge">
+                <span class="latency-icon">⚡</span>
+                <span class="latency-value" id="latency-value">29ns</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Left Column: Performance & Order Book -->
+        <div class="left-column">
+            <!-- Performance Chart -->
+            <section class="card performance-card">
+                <div class="card-header">
+                    <h2>📈 Portfolio Performance</h2>
+                    <div class="pnl-display">
+                        <span class="label">P&L:</span>
+                        <span class="pnl-value" id="pnl-value">+$0.00</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="performance-chart"></canvas>
+                </div>
+                <div class="stats-row">
+                    <div class="stat">
+                        <span class="stat-label">Account Value</span>
+                        <span class="stat-value" id="account-value">$10,000.00</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Trades Today</span>
+                        <span class="stat-value" id="trades-count">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Win Rate</span>
+                        <span class="stat-value" id="win-rate">0%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Order Book -->
+            <section class="card orderbook-card">
+                <div class="card-header">
+                    <h2>📊 Order Book</h2>
+                    <span class="spread-badge" id="spread-badge">Spread: -</span>
+                </div>
+                <div class="orderbook-container">
+                    <div class="orderbook-side asks">
+                        <div class="orderbook-header">
+                            <span>Price</span>
+                            <span>Size</span>
+                        </div>
+                        <div class="orderbook-rows" id="asks-rows">
+                            <!-- Asks will be populated here -->
+                        </div>
+                    </div>
+                    <div class="orderbook-side bids">
+                        <div class="orderbook-rows" id="bids-rows">
+                            <!-- Bids will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Column: AI & Trades -->
+        <div class="right-column">
+            <!-- AI Model Card -->
+            <section class="card ai-card">
+                <div class="card-header">
+                    <h2>🤖 AI Trading Model</h2>
+                    <div class="model-badge">
+                        <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg"
+                            alt="Gemini" class="model-icon">
+                        <span>Gemini 2.0 Flash</span>
+                    </div>
+                </div>
+                <div class="ai-status">
+                    <div class="ai-indicator">
+                        <span class="thinking-dot"></span>
+                        <span id="ai-status-text">Analyzing market...</span>
+                    </div>
+                </div>
+                <div class="ai-reasoning" id="ai-reasoning">
+                    <p class="reasoning-text">Waiting for AI analysis...</p>
+                </div>
+                <div class="ai-decision" id="ai-decision">
+                    <div class="decision-box neutral">
+                        <span class="decision-label">Current Signal</span>
+                        <span class="decision-value" id="current-signal">NEUTRAL</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Engine Metrics -->
+            <section class="card metrics-card">
+                <div class="card-header">
+                    <h2>🚀 Engine Performance</h2>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <span class="metric-value" id="engine-latency">29</span>
+                        <span class="metric-unit">ns</span>
+                        <span class="metric-label">Execution Latency</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value" id="engine-throughput">33.5M</span>
+                        <span class="metric-unit">ops/s</span>
+                        <span class="metric-label">Max Throughput</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value" id="orders-processed">0</span>
+                        <span class="metric-unit"></span>
+                        <span class="metric-label">Orders Processed</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value" id="uptime">0</span>
+                        <span class="metric-unit">s</span>
+                        <span class="metric-label">Uptime</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trade Feed -->
+            <section class="card trades-card">
+                <div class="card-header">
+                    <h2>💰 Recent Trades</h2>
+                </div>
+                <div class="trades-container" id="trades-container">
+                    <div class="trade-placeholder">
+                        <span>No trades yet. AI is analyzing...</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Crypto Trading Section -->
+    <section class="crypto-section">
+        <div class="crypto-header">
+            <h2>₿ Crypto Trading Arena</h2>
+            <span class="badge badge-crypto">Binance Live Feed</span>
+        </div>
+
+        <div class="crypto-content">
+            <!-- Live Prices -->
+            <div class="crypto-prices">
+                <div class="crypto-price-card btc">
+                    <div class="crypto-icon">₿</div>
+                    <div class="crypto-info">
+                        <span class="crypto-name">Bitcoin</span>
+                        <span class="crypto-symbol">BTC/USDT</span>
+                    </div>
+                    <div class="crypto-price-display">
+                        <span class="crypto-price" id="btc-price">$--,---.--</span>
+                        <span class="crypto-change positive" id="btc-change">+0.00%</span>
+                    </div>
+                </div>
+
+                <div class="crypto-price-card eth">
+                    <div class="crypto-icon">Ξ</div>
+                    <div class="crypto-info">
+                        <span class="crypto-name">Ethereum</span>
+                        <span class="crypto-symbol">ETH/USDT</span>
+                    </div>
+                    <div class="crypto-price-display">
+                        <span class="crypto-price" id="eth-price">$-,---.--</span>
+                        <span class="crypto-change positive" id="eth-change">+0.00%</span>
+                    </div>
+                </div>
+
+                <div class="crypto-price-card sol">
+                    <div class="crypto-icon">◎</div>
+                    <div class="crypto-info">
+                        <span class="crypto-name">Solana</span>
+                        <span class="crypto-symbol">SOL/USDT</span>
+                    </div>
+                    <div class="crypto-price-display">
+                        <span class="crypto-price" id="sol-price">$---.--</span>
+                        <span class="crypto-change positive" id="sol-change">+0.00%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Crypto AI & Trades -->
+            <div class="crypto-trading-grid">
+                <div class="card crypto-ai-card">
+                    <div class="card-header">
+                        <h3>🤖 Crypto AI Signal</h3>
+                        <div class="model-badge">
+                            <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg"
+                                alt="Gemini" class="model-icon">
+                            <span>Gemini</span>
+                        </div>
+                    </div>
+                    <div class="crypto-ai-reasoning" id="crypto-ai-reasoning">
+                        <p>Waiting for Binance data stream...</p>
+                    </div>
+                    <div class="crypto-signals">
+                        <div class="crypto-signal" id="btc-signal">
+                            <span class="signal-asset">BTC</span>
+                            <span class="signal-value neutral">HOLD</span>
+                        </div>
+                        <div class="crypto-signal" id="eth-signal">
+                            <span class="signal-asset">ETH</span>
+                            <span class="signal-value neutral">HOLD</span>
+                        </div>
+                        <div class="crypto-signal" id="sol-signal">
+                            <span class="signal-asset">SOL</span>
+                            <span class="signal-value neutral">HOLD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card crypto-trades-card">
+                    <div class="card-header">
+                        <h3>💱 Crypto Trades</h3>
+                        <span class="trades-badge" id="crypto-trades-count">0 trades</span>
+                    </div>
+                    <div class="crypto-trades-container" id="crypto-trades-container">
+                        <div class="trade-placeholder">
+                            <span>Start crypto_trader.py to begin trading</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card crypto-stats-card">
+                    <div class="card-header">
+                        <h3>📊 Crypto P&L</h3>
+                    </div>
+                    <div class="crypto-stats">
+                        <div class="crypto-stat">
+                            <span class="crypto-stat-value" id="crypto-balance">$1,000.00</span>
+                            <span class="crypto-stat-label">Balance</span>
+                        </div>
+                        <div class="crypto-stat">
+                            <span class="crypto-stat-value positive" id="crypto-pnl">$0.00</span>
+                            <span class="crypto-stat-label">P&L</span>
+                        </div>
+                        <div class="crypto-stat">
+                            <span class="crypto-stat-value" id="crypto-positions">0</span>
+                            <span class="crypto-stat-label">Positions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-left">
+            <span class="mode-badge paper">📝 Paper Trading Mode</span>
+            <span class="disclaimer">Simulated trading - No real money at risk</span>
+        </div>
+        <div class="footer-right">
+            <span>Powered by <strong>Nanosecond Arbiter</strong> | Lock-Free SPSC Ring Buffer</span>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

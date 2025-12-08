@@ -4,6 +4,16 @@ use std::thread;
 use std::fs;
 use crate::matching_engine::OrderBook;
 use serde_json::json;
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref AI_DECISION: Mutex<String> = Mutex::new(
+        r#"{"signal": "NEUTRAL", "reasoning": "Waiting for AI analysis..."}"#.to_string()
+    );
+    static ref CRYPTO_DECISION: Mutex<String> = Mutex::new(
+        r#"{"signals": {"btc": "HOLD", "eth": "HOLD", "sol": "HOLD"}, "reasoning": "Waiting for crypto analysis..."}"#.to_string()
+    );
+}
 
 pub fn start_http_server(order_book: Arc<Mutex<OrderBook>>) -> Result<(), Box<dyn std::error::Error>> {
     let server = Server::http("0.0.0.0:8082").unwrap();
@@ -87,6 +97,61 @@ fn handle_request(mut request: Request, order_book: Arc<Mutex<OrderBook>>) {
                 .with_header(Header::from_bytes(&b"Content-Type"[..], &b"application/json"[..]).unwrap())
                 .with_header(Header::from_bytes(&b"Access-Control-Allow-Origin"[..], &b"*"[..]).unwrap());
             
+            let _ = request.respond(response);
+        }
+        
+        (Method::Get, "/api/ai-decision") => {
+            // Return current AI decision state
+            let ai_state = AI_DECISION.lock().unwrap();
+            let response = Response::from_string(ai_state.clone())
+                .with_header(Header::from_bytes(&b"Content-Type"[..], &b"application/json"[..]).unwrap())
+                .with_header(Header::from_bytes(&b"Access-Control-Allow-Origin"[..], &b"*"[..]).unwrap());
+            let _ = request.respond(response);
+        }
+        
+        (Method::Post, "/api/ai-decision") => {
+            // Store AI decision from Python trader
+            let mut content = String::new();
+            if request.as_reader().read_to_string(&mut content).is_ok() {
+                let mut ai_state = AI_DECISION.lock().unwrap();
+                *ai_state = content;
+            }
+            
+            let response = Response::from_string("{\"status\":\"ok\"}")
+                .with_header(Header::from_bytes(&b"Content-Type"[..], &b"application/json"[..]).unwrap())
+                .with_header(Header::from_bytes(&b"Access-Control-Allow-Origin"[..], &b"*"[..]).unwrap());
+            let _ = request.respond(response);
+        }
+        
+        (Method::Get, "/api/crypto-decision") => {
+            // Return current crypto decision state
+            let crypto_state = CRYPTO_DECISION.lock().unwrap();
+            let response = Response::from_string(crypto_state.clone())
+                .with_header(Header::from_bytes(&b"Content-Type"[..], &b"application/json"[..]).unwrap())
+                .with_header(Header::from_bytes(&b"Access-Control-Allow-Origin"[..], &b"*"[..]).unwrap());
+            let _ = request.respond(response);
+        }
+        
+        (Method::Post, "/api/crypto-decision") => {
+            // Store crypto decision from Python trader
+            let mut content = String::new();
+            if request.as_reader().read_to_string(&mut content).is_ok() {
+                let mut crypto_state = CRYPTO_DECISION.lock().unwrap();
+                *crypto_state = content;
+            }
+            
+            let response = Response::from_string("{\"status\":\"ok\"}")
+                .with_header(Header::from_bytes(&b"Content-Type"[..], &b"application/json"[..]).unwrap())
+                .with_header(Header::from_bytes(&b"Access-Control-Allow-Origin"[..], &b"*"[..]).unwrap());
+            let _ = request.respond(response);
+        }
+        
+        // Handle CORS preflight
+        (Method::Options, _) => {
+            let response = Response::from_string("")
+                .with_header(Header::from_bytes(&b"Access-Control-Allow-Origin"[..], &b"*"[..]).unwrap())
+                .with_header(Header::from_bytes(&b"Access-Control-Allow-Methods"[..], &b"GET, POST, OPTIONS"[..]).unwrap())
+                .with_header(Header::from_bytes(&b"Access-Control-Allow-Headers"[..], &b"Content-Type"[..]).unwrap());
             let _ = request.respond(response);
         }
         

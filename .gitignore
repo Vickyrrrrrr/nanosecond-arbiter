@@ -12,6 +12,9 @@ venv/
 # Performance data (contains potentially sensitive info)
 performance_*.json
 
+# API Keys (NEVER push this!)
+config.py
+
 # IDE
 .vscode/
 .idea/
