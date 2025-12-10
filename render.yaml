@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: nanosecond-arbiter
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "./start_render.sh"
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: BINANCE_API_KEY
+        sync: false
+      - key: BINANCE_API_SECRET
+        sync: false
+      - key: PYTHONUNBUFFERED
+        value: "true"
