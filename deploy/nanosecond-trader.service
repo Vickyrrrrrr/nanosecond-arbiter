@@ -1,0 +1,19 @@
+[Unit]
+Description=Nanosecond Arbiter Safe Trader
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/nanosecond-arbiter
+ExecStart=/usr/bin/python3 safe_trader.py
+Restart=always
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+# Environment variables will be loaded from /etc/environment or set here manually
+# Replace these with your actual keys on the server or use setup.sh to inject them
+Environment="GEMINI_API_KEY=AIzaSyB7BWyrMFoy1vQZmuge2tmZSvNsy6r6mFk"
+Environment="BINANCE_API_KEY=YOUR_BINANCE_API_KEY_HERE"
+Environment="BINANCE_API_SECRET=YOUR_BINANCE_SECRET_HERE"
+
+[Install]
+WantedBy=multi-user.target

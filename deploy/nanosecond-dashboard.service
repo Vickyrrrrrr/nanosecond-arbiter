@@ -1,0 +1,14 @@
+[Unit]
+Description=Nanosecond Arbiter Dashboard
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/nanosecond-arbiter
+ExecStart=/usr/bin/python3 dashboard_server.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

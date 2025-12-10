@@ -275,9 +275,16 @@ function updateAIDecision(data) {
 
     // Sync trading state from Python trader
     if (data.balance !== undefined) {
+        console.log("DEBUG: Received Balance:", data.balance);
         state.accountValue = data.balance;
         document.getElementById('account-value').textContent =
             `$${data.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+        // Also update the Crypto Panel balance
+        const cryptoBal = document.getElementById('crypto-balance');
+        if (cryptoBal) {
+            cryptoBal.textContent = `$${data.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
     }
 
     if (data.pnl !== undefined) {
@@ -285,6 +292,13 @@ function updateAIDecision(data) {
         const pnlElement = document.getElementById('pnl-value');
         pnlElement.textContent = data.pnl >= 0 ? `+$${data.pnl.toFixed(2)}` : `-$${Math.abs(data.pnl).toFixed(2)}`;
         pnlElement.className = `pnl-value ${data.pnl >= 0 ? 'positive' : 'negative'}`;
+
+        // Also update Crypto Panel P&L
+        if (document.getElementById('crypto-pnl')) {
+            document.getElementById('crypto-pnl').textContent =
+                data.pnl >= 0 ? `+$${data.pnl.toFixed(2)}` : `-$${Math.abs(data.pnl).toFixed(2)}`;
+            document.getElementById('crypto-pnl').className = `crypto-stat-value ${data.pnl >= 0 ? 'positive' : 'negative'}`;
+        }
 
         // Update performance history for chart
         state.performanceHistory.push({
@@ -300,20 +314,79 @@ function updateAIDecision(data) {
     }
 
     // Handle trade data if present
+    // Recent trades
     if (data.trade) {
-        const trade = {
-            id: Date.now(),
-            action: data.trade.signal || 'BUY',
-            price: data.trade.price?.toFixed(2) || '0.00',
-            quantity: data.trade.quantity || 1,
-            latency: data.trade.latency_ns || 29,
-            time: new Date(),
-            pnl: 0
-        };
-        state.trades.unshift(trade);
+        state.trades.unshift({
+            action: data.trade.signal,
+            price: data.trade.price,
+            quantity: data.trade.quantity,
+            latency: data.trade.latency_ns,
+            time: new Date()
+        });
         if (state.trades.length > 20) state.trades.pop();
         updateTradesUI();
     }
+
+    // NEW: Update positions table
+    if (data.positions) {
+        renderPositionsTable(data.positions);
+    }
+}
+
+function renderPositionsTable(positions) {
+    const container = document.getElementById('positions-body');
+    if (!container) return;
+
+    const symbols = Object.keys(positions);
+
+    if (symbols.length === 0) {
+        container.innerHTML = '<div class="empty-state">No open positions</div>';
+        return;
+    }
+
+    container.innerHTML = symbols.map(sym => {
+        const pos = positions[sym];
+        const pnl = parseFloat(pos.pnl);
+        const pnlClass = pnl >= 0 ? 'positive' : 'negative';
+        const pnlSign = pnl >= 0 ? '+' : '';
+
+        let icon = '○';
+        if (sym.includes('BTC')) icon = '₿';
+        if (sym.includes('ETH')) icon = 'Ξ';
+        if (sym.includes('SOL')) icon = '◎';
+
+        return `
+            <div class="position-card">
+                <div class="position-header">
+                    <div class="position-asset">
+                        <span class="asset-icon">${icon}</span>
+                        ${sym}
+                    </div>
+                    <div class="position-pnl ${pnlClass}">
+                        ${pnlSign}$${Math.abs(pnl).toFixed(2)}
+                    </div>
+                </div>
+                <div class="position-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Quantity</span>
+                        <span class="detail-value text-accent-cyan">${parseFloat(pos.quantity).toFixed(4)}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Entry Price</span>
+                        <span class="detail-value text-accent-purple">$${parseFloat(pos.entry_price).toFixed(2)}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Current Price</span>
+                        <span class="detail-value text-gradient-primary">$${parseFloat(pos.current_price).toFixed(2)}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Capital Used</span>
+                        <span class="detail-value">$${parseFloat(pos.capital).toFixed(2)}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
 }
 
 // ============================================
@@ -321,72 +394,12 @@ function updateAIDecision(data) {
 // ============================================
 
 function simulateAIActivity() {
-    const signals = ['BUY', 'SELL', 'NEUTRAL'];
-    const reasonings = [
-        'Bullish momentum detected. RSI indicates oversold conditions.',
-        'Bearish divergence forming. Taking profit on long positions.',
-        'Market consolidating. Waiting for clear breakout signal.',
-        'Strong support level holding. Accumulating position.',
-        'Resistance tested 3 times. Expecting breakdown.',
-        'Volume surge detected. Following smart money flow.',
-    ];
-
-    // Randomly update sometimes
-    if (Math.random() > 0.7) {
-        const signal = signals[Math.floor(Math.random() * signals.length)];
-        const reasoning = reasonings[Math.floor(Math.random() * reasonings.length)];
-
-        updateAIDecision({ signal, reasoning });
-
-        // Simulate trade execution
-        if (signal !== 'NEUTRAL') {
-            simulateTrade(signal);
-        }
-    }
+    // Simulation disabled to prevent ghost data
+    console.log("Waiting for API connection...");
 }
 
 function simulateTrade(action) {
-    const price = 100 + Math.random() * 50;
-    const quantity = Math.floor(1 + Math.random() * 10);
-    const latency = 20 + Math.floor(Math.random() * 20);
-
-    // Update state
-    const tradeValue = price * quantity;
-    const pnlChange = action === 'BUY' ?
-        (Math.random() > 0.4 ? Math.random() * 50 : -Math.random() * 30) :
-        (Math.random() > 0.4 ? Math.random() * 50 : -Math.random() * 30);
-
-    state.pnl += pnlChange;
-    state.accountValue = CONFIG.startingBalance + state.pnl;
-    state.tradesCount++;
-    state.ordersProcessed++;
-
-    if (pnlChange > 0) state.wins++;
-
-    // Add trade to list
-    const trade = {
-        id: Date.now(),
-        action,
-        price: price.toFixed(2),
-        quantity,
-        latency,
-        time: new Date(),
-        pnl: pnlChange.toFixed(2),
-    };
-
-    state.trades.unshift(trade);
-    if (state.trades.length > 20) state.trades.pop();
-
-    // Update UI
-    updateTradesUI();
-    updateStatsUI();
-
-    // Add to performance history
-    state.performanceHistory.push({
-        time: new Date(),
-        value: state.accountValue
-    });
-    updateChart();
+    // Simulation disabled
 }
 
 function updateTradesUI() {
@@ -608,8 +621,9 @@ async function fetchCryptoDecision() {
             updateCryptoDecision(data);
         }
     } catch (e) {
-        // Use simulation
-        simulateCryptoSignals();
+        // Simulation disabled to preventing confusing user with fake data
+        // simulateCryptoSignals();
+        console.log("Waiting for API...");
     }
 }
 

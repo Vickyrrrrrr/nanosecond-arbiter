@@ -90,6 +90,19 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Active Positions -->
+            <section class="card positions-card">
+                <div class="card-header">
+                    <h2>📊 Active Positions</h2>
+                </div>
+                <div class="table-container">
+                    <div class="table-container positions-grid" id="positions-body">
+                        <!-- Vertical Position Cards populated via JS -->
+                        <div class="empty-state">No open positions</div>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <!-- Right Column: AI & Trades -->
@@ -253,25 +266,7 @@
                     </div>
                 </div>
 
-                <div class="card crypto-stats-card">
-                    <div class="card-header">
-                        <h3>📊 Crypto P&L</h3>
-                    </div>
-                    <div class="crypto-stats">
-                        <div class="crypto-stat">
-                            <span class="crypto-stat-value" id="crypto-balance">$1,000.00</span>
-                            <span class="crypto-stat-label">Balance</span>
-                        </div>
-                        <div class="crypto-stat">
-                            <span class="crypto-stat-value positive" id="crypto-pnl">$0.00</span>
-                            <span class="crypto-stat-label">P&L</span>
-                        </div>
-                        <div class="crypto-stat">
-                            <span class="crypto-stat-value" id="crypto-positions">0</span>
-                            <span class="crypto-stat-label">Positions</span>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>

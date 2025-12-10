@@ -895,7 +895,7 @@ body::before {
 /* Crypto Trading Grid */
 .crypto-trading-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--spacing-md);
 }
 
@@ -1016,6 +1016,119 @@ body::before {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-top: var(--spacing-xs);
+}
+
+/* ============================================
+   POSITIONS GRID (Vertical Cards)
+   ============================================ */
+
+.positions-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.position-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    transition: all 0.2s ease;
+}
+
+.position-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--border-glow);
+}
+
+.position-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: var(--spacing-sm);
+}
+
+.position-asset {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.position-pnl {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.position-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.detail-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.position-card .positive {
+    color: var(--accent-green);
+}
+
+.position-card .negative {
+    color: var(--accent-red);
+}
+
+.positions-table .positive {
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+.positions-table .negative {
+    color: var(--accent-red);
+    font-weight: 600;
+}
+
+/* Typography Utilities */
+.text-accent-cyan {
+    color: var(--accent-cyan);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+}
+
+.text-accent-purple {
+    color: var(--accent-purple);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+}
+
+.text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
 }
 
 /* ============================================

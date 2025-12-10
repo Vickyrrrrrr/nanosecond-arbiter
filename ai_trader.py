@@ -23,6 +23,15 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 ENGINE_URL = "http://localhost:8082"
 TRADE_INTERVAL = 5  # Seconds between AI decisions
 
+# ============================================
+# RISK MANAGEMENT CONTROLS
+# ============================================
+MAX_POSITION = 20          # Maximum shares to hold (long or short)
+MIN_BALANCE = 500          # Minimum balance before stopping trades
+STOP_LOSS_PCT = 0.10       # Stop trading if P&L drops 10%
+MAX_TRADE_SIZE = 2         # Maximum shares per trade
+STARTING_BALANCE = 10000   # Starting balance for P&L calculation
+
 # Simulated market data (for paper trading)
 class MarketSimulator:
     def __init__(self, base_price: float = 150.0):
@@ -87,8 +96,30 @@ class GeminiTrader:
         self.api_key = api_key
         self.api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
         self.position = 0  # Current position (positive = long, negative = short)
-        self.balance = 10000  # Starting balance
+        self.balance = STARTING_BALANCE  # Starting balance
         self.trades = []
+        self.stopped = False  # Emergency stop flag
+    
+    def check_risk_limits(self) -> Dict[str, Any]:
+        """Check if we should stop trading due to risk limits"""
+        pnl = self.balance - STARTING_BALANCE
+        pnl_pct = pnl / STARTING_BALANCE
+        
+        # Check stop-loss
+        if pnl_pct <= -STOP_LOSS_PCT:
+            return {
+                "can_trade": False,
+                "reason": f"🛑 STOP-LOSS triggered! P&L: {pnl_pct:.1%} (limit: -{STOP_LOSS_PCT:.0%})"
+            }
+        
+        # Check minimum balance
+        if self.balance < MIN_BALANCE:
+            return {
+                "can_trade": False,
+                "reason": f"🛑 Balance too low: ${self.balance:.2f} (min: ${MIN_BALANCE})"
+            }
+        
+        return {"can_trade": True, "reason": ""}
         
     def analyze_market(self, market_data: Dict, indicators: Dict) -> Dict[str, Any]:
         """Use Gemini to analyze market and make trading decision"""
@@ -167,16 +198,30 @@ Analyze the market and provide a trading decision. Respond ONLY with valid JSON:
         trend = indicators.get("trend", "neutral")
         momentum = indicators.get("momentum", 0)
         
+        # RISK CHECK: Don't buy if already at max position
         if trend == "bullish" and momentum > 0.5:
-            signal = "BUY"
-            confidence = min(0.5 + momentum / 10, 0.9)
-            quantity = min(int(1 + abs(momentum)), 5)
-            reasoning = f"Bullish trend with {momentum:.1f}% momentum. Going long."
+            if self.position >= MAX_POSITION:
+                signal = "HOLD"
+                reasoning = f"⚠️ Max position reached ({self.position}/{MAX_POSITION}). Holding."
+            else:
+                signal = "BUY"
+                confidence = min(0.5 + momentum / 10, 0.9)
+                # Limit trade size and don't exceed max position
+                max_can_buy = MAX_POSITION - self.position
+                quantity = min(MAX_TRADE_SIZE, max_can_buy)
+                reasoning = f"Bullish trend with {momentum:.1f}% momentum. Going long."
+        # RISK CHECK: Don't sell short beyond max position
         elif trend == "bearish" and momentum < -0.5:
-            signal = "SELL"
-            confidence = min(0.5 + abs(momentum) / 10, 0.9)
-            quantity = min(int(1 + abs(momentum)), 5)
-            reasoning = f"Bearish trend with {momentum:.1f}% momentum. Reducing position."
+            if self.position <= -MAX_POSITION:
+                signal = "HOLD"
+                reasoning = f"⚠️ Max short position reached ({self.position}/{-MAX_POSITION}). Holding."
+            else:
+                signal = "SELL"
+                confidence = min(0.5 + abs(momentum) / 10, 0.9)
+                # Limit trade size and don't exceed max short position
+                max_can_sell = MAX_POSITION + self.position
+                quantity = min(MAX_TRADE_SIZE, max_can_sell)
+                reasoning = f"Bearish trend with {momentum:.1f}% momentum. Reducing position."
         else:
             reasoning = "Trend unclear, holding position. Waiting for signal."
         
@@ -188,12 +233,22 @@ Analyze the market and provide a trading decision. Respond ONLY with valid JSON:
         }
     
     def execute_trade(self, decision: Dict, market_data: Dict) -> Optional[Dict]:
-        """Execute trade via the Rust engine"""
+        """Execute trade via the Rust engine with risk checks"""
         signal = decision.get("signal", "HOLD")
         quantity = decision.get("quantity", 1)
         
         if signal == "HOLD":
             return None
+        
+        # RISK CHECK: Verify we can trade
+        risk_check = self.check_risk_limits()
+        if not risk_check["can_trade"]:
+            print(f"\n{risk_check['reason']}")
+            self.stopped = True
+            return None
+        
+        # RISK CHECK: Limit quantity
+        quantity = min(quantity, MAX_TRADE_SIZE)
         
         # Prepare order for Rust engine
         order = {
@@ -270,7 +325,7 @@ def send_ai_decision(decision: Dict, trader: 'GeminiTrader', trade: Optional[Dic
             "trade": trade,
             # Include full trading state for dashboard sync
             "balance": trader.balance,
-            "pnl": trader.balance - 10000,  # Calculate P&L from starting balance
+            "pnl": trader.balance - STARTING_BALANCE,  # Calculate P&L from starting balance
             "position": trader.position,
             "tradesCount": len(trader.trades)
         }
@@ -296,6 +351,12 @@ def main():
     print(f"⏱️  Trade interval: {TRADE_INTERVAL} seconds")
     print()
     print("📝 Running in PAPER TRADING mode - no real money at risk")
+    print()
+    print("🛡️  RISK CONTROLS ACTIVE:")
+    print(f"   • Max Position: {MAX_POSITION} shares")
+    print(f"   • Max Trade Size: {MAX_TRADE_SIZE} shares")
+    print(f"   • Stop-Loss: {STOP_LOSS_PCT:.0%} drawdown")
+    print(f"   • Min Balance: ${MIN_BALANCE}")
     print("-" * 60)
     print()
     
@@ -307,6 +368,13 @@ def main():
     
     try:
         while True:
+            # Check if trading was stopped by risk controls
+            if trader.stopped:
+                print("\n" + "=" * 60)
+                print("🛑 TRADING STOPPED BY RISK CONTROLS")
+                print("=" * 60)
+                break
+            
             # Get market data
             market_data = market.tick()
             indicators = market.get_indicators()
@@ -343,7 +411,7 @@ def main():
         print(f"   Total Trades: {trade_count}")
         print(f"   Final Position: {trader.position}")
         print(f"   Final Balance: ${trader.balance:.2f}")
-        print(f"   P&L: ${trader.balance - 10000:.2f}")
+        print(f"   P&L: ${trader.balance - STARTING_BALANCE:.2f}")
         print("=" * 60)
 
 
