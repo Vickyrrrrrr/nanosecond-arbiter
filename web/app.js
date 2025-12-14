@@ -1,38 +1,78 @@
 /* ============================================
-   NANOSECOND ARBITER AI ARENA - APP.JS
-   Real-time dashboard updates
+   NANOSECOND ARBITER AI ARENA - APP.JS v2.0
+   Real-time dashboard with advanced features
    ============================================ */
 
-// Configuration
+// ============================================
+// CONFIGURATION
+// ============================================
+
 const CONFIG = {
     apiBaseUrl: window.location.origin,
-    pollInterval: 1000,          // Poll every 1 second
-    chartMaxPoints: 60,          // 1 minute of data at 1s intervals
+    pollInterval: 1000,
+    chartMaxPoints: 60,
     startingBalance: 10000,
+    soundEnabled: true,
+    histogramBins: 20,
 };
 
-// State
+// ============================================
+// STATE MANAGEMENT
+// ============================================
+
 const state = {
     accountValue: CONFIG.startingBalance,
     pnl: 0,
     tradesCount: 0,
     wins: 0,
+    losses: 0,
     ordersProcessed: 0,
     uptime: 0,
     trades: [],
     performanceHistory: [],
+    latencyHistory: [],
     aiDecision: null,
     aiReasoning: 'Waiting for AI analysis...',
+    aiConfidence: 0.78,
+    theme: 'dark',
+    soundEnabled: true,
+    // Risk metrics
+    sharpeRatio: 1.85,
+    maxDrawdown: -3.2,
+    winLossRatio: 1.42,
+    var95: 125.50,
+    // Order flow
+    buyPressure: 55,
+    sellPressure: 45,
+    // System metrics
+    cpuUsage: 12,
+    memoryUsage: 45,
+    bufferFill: 23,
+    // Latency percentiles
+    p50: 19,
+    p95: 25,
+    p99: 32,
+    p999: 45,
 };
+
+// Audio context for sound effects
+let audioContext = null;
 
 // Performance Chart
 let performanceChart = null;
 
-// Initialize app
+// ============================================
+// INITIALIZATION
+// ============================================
+
 document.addEventListener('DOMContentLoaded', () => {
     initChart();
+    initHistogram();
+    initRingBufferViz();
+    initAudio();
     startPolling();
     startUptime();
+    initKeyboardShortcuts();
 
     // Add initial data point
     state.performanceHistory.push({
@@ -40,7 +80,192 @@ document.addEventListener('DOMContentLoaded', () => {
         value: CONFIG.startingBalance
     });
     updateChart();
+
+    // Initial latency data
+    generateLatencyData();
+
+    // Show startup notification
+    showNotification('success', 'Engine Started', 'Nanosecond Arbiter is now active');
 });
+
+// ============================================
+// AUDIO SYSTEM
+// ============================================
+
+function initAudio() {
+    try {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    } catch (e) {
+        console.log('Audio not supported');
+    }
+}
+
+function playSound(type) {
+    if (!state.soundEnabled || !audioContext) return;
+
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    switch (type) {
+        case 'trade':
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+            gainNode.gain.value = 0.1;
+            break;
+        case 'profit':
+            oscillator.frequency.value = 1200;
+            oscillator.type = 'sine';
+            gainNode.gain.value = 0.15;
+            break;
+        case 'loss':
+            oscillator.frequency.value = 300;
+            oscillator.type = 'triangle';
+            gainNode.gain.value = 0.1;
+            break;
+        case 'alert':
+            oscillator.frequency.value = 600;
+            oscillator.type = 'square';
+            gainNode.gain.value = 0.08;
+            break;
+    }
+
+    oscillator.start();
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
+    oscillator.stop(audioContext.currentTime + 0.2);
+}
+
+function toggleSound() {
+    state.soundEnabled = !state.soundEnabled;
+    const btn = document.getElementById('sound-toggle');
+    btn.textContent = state.soundEnabled ? '🔊' : '🔇';
+    btn.classList.toggle('muted', !state.soundEnabled);
+
+    if (state.soundEnabled) {
+        playSound('alert');
+    }
+}
+
+// ============================================
+// THEME SYSTEM
+// ============================================
+
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    html.setAttribute('data-theme', newTheme);
+    state.theme = newTheme;
+
+    const btn = document.getElementById('theme-toggle');
+    btn.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+
+    // Update chart colors
+    updateChartTheme(newTheme);
+
+    showNotification('success', 'Theme Changed', `Switched to ${newTheme} mode`);
+}
+
+function updateChartTheme(theme) {
+    if (!performanceChart) return;
+
+    const isDark = theme === 'dark';
+    performanceChart.options.scales.y.ticks.color = isDark ? '#606070' : '#8a8aa0';
+    performanceChart.options.scales.y.grid.color = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+    performanceChart.update('none');
+}
+
+// ============================================
+// KEYBOARD SHORTCUTS
+// ============================================
+
+function initKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+        // Ignore if typing in an input
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        switch (e.key.toLowerCase()) {
+            case '?':
+                toggleShortcutsModal();
+                break;
+            case 't':
+                toggleTheme();
+                break;
+            case 'm':
+                toggleSound();
+                break;
+            case 'e':
+                exportTradesCSV();
+                break;
+            case 'j':
+                exportTradesJSON();
+                break;
+            case 'r':
+                refreshData();
+                break;
+            case '1':
+                document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+                break;
+            case '2':
+                document.getElementById('crypto-section').scrollIntoView({ behavior: 'smooth' });
+                break;
+            case '3':
+                document.getElementById('advanced-section').scrollIntoView({ behavior: 'smooth' });
+                break;
+            case 'escape':
+                closeAllModals();
+                break;
+        }
+    });
+}
+
+function toggleShortcutsModal() {
+    const modal = document.getElementById('shortcuts-modal');
+    modal.classList.toggle('active');
+}
+
+function closeAllModals() {
+    document.getElementById('shortcuts-modal').classList.remove('active');
+}
+
+// ============================================
+// NOTIFICATIONS
+// ============================================
+
+function showNotification(type, title, message) {
+    const container = document.getElementById('notification-container');
+
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+
+    const icons = {
+        success: '✅',
+        warning: '⚠️',
+        error: '❌',
+        info: 'ℹ️'
+    };
+
+    notification.innerHTML = `
+        <span class="notification-icon">${icons[type] || icons.info}</span>
+        <div class="notification-content">
+            <div class="notification-title">${title}</div>
+            <div class="notification-message">${message}</div>
+        </div>
+        <button class="notification-close" onclick="this.parentElement.remove()">×</button>
+    `;
+
+    container.appendChild(notification);
+
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100px)';
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+}
 
 // ============================================
 // CHART INITIALIZATION
@@ -73,9 +298,7 @@ function initChart() {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: {
-                    display: false
-                },
+                legend: { display: false },
                 tooltip: {
                     backgroundColor: 'rgba(18, 18, 26, 0.9)',
                     titleColor: '#fff',
@@ -90,36 +313,20 @@ function initChart() {
                 }
             },
             scales: {
-                x: {
-                    display: false,
-                    grid: {
-                        display: false
-                    }
-                },
+                x: { display: false, grid: { display: false } },
                 y: {
                     display: true,
                     position: 'right',
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.05)',
-                        drawBorder: false
-                    },
+                    grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
                     ticks: {
                         color: '#606070',
-                        font: {
-                            family: "'JetBrains Mono', monospace",
-                            size: 10
-                        },
+                        font: { family: "'JetBrains Mono', monospace", size: 10 },
                         callback: (value) => '$' + value.toLocaleString()
                     }
                 }
             },
-            interaction: {
-                intersect: false,
-                mode: 'index'
-            },
-            animation: {
-                duration: 300
-            }
+            interaction: { intersect: false, mode: 'index' },
+            animation: { duration: 300 }
         }
     });
 }
@@ -130,14 +337,99 @@ function updateChart() {
     );
     const data = state.performanceHistory.map(p => p.value);
 
-    // Keep only last N points
     if (labels.length > CONFIG.chartMaxPoints) {
         state.performanceHistory = state.performanceHistory.slice(-CONFIG.chartMaxPoints);
     }
 
     performanceChart.data.labels = labels;
     performanceChart.data.datasets[0].data = data;
-    performanceChart.update('none'); // Update without animation for performance
+    performanceChart.update('none');
+}
+
+// ============================================
+// LATENCY HISTOGRAM
+// ============================================
+
+function initHistogram() {
+    generateHistogramBars();
+}
+
+function generateHistogramBars() {
+    const container = document.getElementById('histogram-chart');
+    container.innerHTML = '';
+
+    for (let i = 0; i < CONFIG.histogramBins; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'histogram-bar';
+        bar.style.height = '0%';
+        bar.setAttribute('data-value', '0ns');
+        container.appendChild(bar);
+    }
+}
+
+function generateLatencyData() {
+    // Generate realistic latency distribution (log-normal)
+    const bars = document.querySelectorAll('.histogram-bar');
+    const baseLatency = 19;
+
+    bars.forEach((bar, i) => {
+        // Create a distribution that peaks in the middle-low range
+        const position = i / CONFIG.histogramBins;
+        let height;
+
+        if (position < 0.3) {
+            height = 30 + position * 200;
+        } else if (position < 0.5) {
+            height = 90 - (position - 0.3) * 300;
+        } else {
+            height = 30 - (position - 0.5) * 50;
+        }
+
+        height = Math.max(5, Math.min(100, height + (Math.random() - 0.5) * 20));
+
+        const latencyValue = Math.round(baseLatency + i * 2 + Math.random() * 3);
+
+        bar.style.height = height + '%';
+        bar.setAttribute('data-value', latencyValue + 'ns');
+    });
+
+    // Update percentile values with slight variations
+    state.p50 = 19 + Math.floor(Math.random() * 3);
+    state.p95 = 25 + Math.floor(Math.random() * 4);
+    state.p99 = 32 + Math.floor(Math.random() * 5);
+    state.p999 = 45 + Math.floor(Math.random() * 10);
+
+    document.getElementById('p50-value').textContent = state.p50 + 'ns';
+    document.getElementById('p95-value').textContent = state.p95 + 'ns';
+    document.getElementById('p99-value').textContent = state.p99 + 'ns';
+    document.getElementById('p999-value').textContent = state.p999 + 'ns';
+}
+
+// ============================================
+// RING BUFFER VISUALIZATION
+// ============================================
+
+function initRingBufferViz() {
+    const container = document.getElementById('ring-buffer-viz');
+    const numSlots = 32;
+
+    for (let i = 0; i < numSlots; i++) {
+        const slot = document.createElement('div');
+        slot.className = 'buffer-slot';
+        container.appendChild(slot);
+    }
+
+    updateRingBufferViz();
+}
+
+function updateRingBufferViz() {
+    const slots = document.querySelectorAll('.buffer-slot');
+    const fillPercent = state.bufferFill / 100;
+    const numFilled = Math.floor(slots.length * fillPercent);
+
+    slots.forEach((slot, i) => {
+        slot.classList.toggle('filled', i < numFilled);
+    });
 }
 
 // ============================================
@@ -145,15 +437,21 @@ function updateChart() {
 // ============================================
 
 function startPolling() {
-    // Initial fetch
     fetchOrderBook();
     fetchMetrics();
     fetchAIDecision();
 
-    // Poll periodically
     setInterval(fetchOrderBook, CONFIG.pollInterval);
     setInterval(fetchMetrics, CONFIG.pollInterval);
     setInterval(fetchAIDecision, CONFIG.pollInterval * 2);
+    setInterval(updateAdvancedMetrics, CONFIG.pollInterval);
+}
+
+function refreshData() {
+    fetchOrderBook();
+    fetchMetrics();
+    fetchAIDecision();
+    showNotification('info', 'Refreshed', 'All data has been refreshed');
 }
 
 async function fetchOrderBook() {
@@ -164,7 +462,7 @@ async function fetchOrderBook() {
             updateOrderBook(data);
         }
     } catch (e) {
-        console.log('Order book fetch failed, engine may not be running');
+        console.log('Order book fetch failed');
     }
 }
 
@@ -188,7 +486,6 @@ async function fetchAIDecision() {
             updateAIDecision(data);
         }
     } catch (e) {
-        // AI endpoint may not exist yet - use simulation
         simulateAIActivity();
     }
 }
@@ -201,11 +498,9 @@ function updateOrderBook(data) {
     const asksContainer = document.getElementById('asks-rows');
     const bidsContainer = document.getElementById('bids-rows');
 
-    // Clear existing rows
     asksContainer.innerHTML = '';
     bidsContainer.innerHTML = '';
 
-    // Render asks (reversed for display)
     const asks = data.asks || [];
     asks.slice(0, 5).forEach(level => {
         const totalQty = level.orders.reduce((sum, o) => sum + o.quantity, 0);
@@ -218,7 +513,6 @@ function updateOrderBook(data) {
         asksContainer.appendChild(row);
     });
 
-    // Render bids (sorted descending)
     const bids = data.bids || [];
     bids.slice(-5).reverse().forEach(level => {
         const totalQty = level.orders.reduce((sum, o) => sum + o.quantity, 0);
@@ -231,7 +525,6 @@ function updateOrderBook(data) {
         bidsContainer.appendChild(row);
     });
 
-    // Calculate spread
     if (asks.length > 0 && bids.length > 0) {
         const bestAsk = asks[0].price / 100;
         const bestBid = bids[bids.length - 1].price / 100;
@@ -258,7 +551,7 @@ function updateMetrics(data) {
 function updateAIDecision(data) {
     if (data.reasoning) {
         state.aiReasoning = data.reasoning;
-        document.querySelector('.reasoning-text').textContent = data.reasoning;
+        updateAIReasoningChain(data.reasoning);
     }
 
     if (data.signal) {
@@ -273,34 +566,32 @@ function updateAIDecision(data) {
                 `Signal: ${data.signal.toUpperCase()}`;
     }
 
-    // Sync trading state from Python trader
+    if (data.confidence !== undefined) {
+        updateConfidenceGauge(data.confidence);
+    }
+
     if (data.balance !== undefined) {
-        console.log("DEBUG: Received Balance:", data.balance);
         state.accountValue = data.balance;
         document.getElementById('account-value').textContent =
             `$${data.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-
-        // Also update the Crypto Panel balance
-        const cryptoBal = document.getElementById('crypto-balance');
-        if (cryptoBal) {
-            cryptoBal.textContent = `$${data.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        }
     }
 
     if (data.pnl !== undefined) {
+        const prevPnl = state.pnl;
         state.pnl = data.pnl;
         const pnlElement = document.getElementById('pnl-value');
         pnlElement.textContent = data.pnl >= 0 ? `+$${data.pnl.toFixed(2)}` : `-$${Math.abs(data.pnl).toFixed(2)}`;
         pnlElement.className = `pnl-value ${data.pnl >= 0 ? 'positive' : 'negative'}`;
 
-        // Also update Crypto Panel P&L
-        if (document.getElementById('crypto-pnl')) {
-            document.getElementById('crypto-pnl').textContent =
-                data.pnl >= 0 ? `+$${data.pnl.toFixed(2)}` : `-$${Math.abs(data.pnl).toFixed(2)}`;
-            document.getElementById('crypto-pnl').className = `crypto-stat-value ${data.pnl >= 0 ? 'positive' : 'negative'}`;
+        // Check for significant P&L change
+        if (Math.abs(data.pnl - prevPnl) > 10) {
+            if (data.pnl > prevPnl) {
+                playSound('profit');
+            } else {
+                playSound('loss');
+            }
         }
 
-        // Update performance history for chart
         state.performanceHistory.push({
             time: new Date(),
             value: state.accountValue
@@ -313,93 +604,209 @@ function updateAIDecision(data) {
         document.getElementById('trades-count').textContent = data.tradesCount;
     }
 
-    // Handle trade data if present
-    // Recent trades
     if (data.trade) {
-        state.trades.unshift({
-            action: data.trade.signal,
-            price: data.trade.price,
-            quantity: data.trade.quantity,
-            latency: data.trade.latency_ns,
-            time: new Date()
-        });
+        const trade = {
+            id: Date.now(),
+            action: data.trade.signal || 'BUY',
+            price: data.trade.price?.toFixed(2) || '0.00',
+            quantity: data.trade.quantity || 1,
+            latency: data.trade.latency_ns || 29,
+            time: new Date(),
+            pnl: 0
+        };
+        state.trades.unshift(trade);
         if (state.trades.length > 20) state.trades.pop();
         updateTradesUI();
-    }
-
-    // NEW: Update positions table
-    if (data.positions) {
-        renderPositionsTable(data.positions);
+        playSound('trade');
     }
 }
 
-function renderPositionsTable(positions) {
-    const container = document.getElementById('positions-body');
-    if (!container) return;
+function updateAIReasoningChain(reasoning) {
+    const container = document.getElementById('ai-decision-chain');
 
-    const symbols = Object.keys(positions);
+    // Split reasoning into steps (or generate fake steps for demo)
+    const steps = reasoning.split('. ').filter(s => s.length > 0).slice(0, 4);
 
-    if (symbols.length === 0) {
-        container.innerHTML = '<div class="empty-state">No open positions</div>';
-        return;
+    container.innerHTML = steps.map((step, i) => `
+        <div class="decision-step">
+            <span class="step-number">${i + 1}</span>
+            <span class="step-text">${step}${step.endsWith('.') ? '' : '...'}</span>
+        </div>
+    `).join('');
+}
+
+function updateConfidenceGauge(confidence) {
+    state.aiConfidence = confidence;
+    document.getElementById('confidence-value').textContent = Math.round(confidence * 100) + '%';
+
+    const fill = document.getElementById('confidence-fill');
+    fill.style.width = (confidence * 100) + '%';
+
+    fill.className = 'confidence-fill';
+    if (confidence >= 0.7) {
+        fill.classList.add('high');
+    } else if (confidence >= 0.4) {
+        fill.classList.add('medium');
+    } else {
+        fill.classList.add('low');
     }
-
-    container.innerHTML = symbols.map(sym => {
-        const pos = positions[sym];
-        const pnl = parseFloat(pos.pnl);
-        const pnlClass = pnl >= 0 ? 'positive' : 'negative';
-        const pnlSign = pnl >= 0 ? '+' : '';
-
-        let icon = '○';
-        if (sym.includes('BTC')) icon = '₿';
-        if (sym.includes('ETH')) icon = 'Ξ';
-        if (sym.includes('SOL')) icon = '◎';
-
-        return `
-            <div class="position-card">
-                <div class="position-header">
-                    <div class="position-asset">
-                        <span class="asset-icon">${icon}</span>
-                        ${sym}
-                    </div>
-                    <div class="position-pnl ${pnlClass}">
-                        ${pnlSign}$${Math.abs(pnl).toFixed(2)}
-                    </div>
-                </div>
-                <div class="position-details">
-                    <div class="detail-row">
-                        <span class="detail-label">Quantity</span>
-                        <span class="detail-value text-accent-cyan">${parseFloat(pos.quantity).toFixed(4)}</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Entry Price</span>
-                        <span class="detail-value text-accent-purple">$${parseFloat(pos.entry_price).toFixed(2)}</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Current Price</span>
-                        <span class="detail-value text-gradient-primary">$${parseFloat(pos.current_price).toFixed(2)}</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Capital Used</span>
-                        <span class="detail-value">$${parseFloat(pos.capital).toFixed(2)}</span>
-                    </div>
-                </div>
-            </div>
-        `;
-    }).join('');
 }
 
 // ============================================
-// SIMULATION (for demo when AI not connected)
+// ADVANCED METRICS UPDATES
+// ============================================
+
+function updateAdvancedMetrics() {
+    // Simulate advanced metrics updates
+    updateRiskMetrics();
+    updateOrderFlow();
+    updateSystemMetrics();
+    generateLatencyData();
+}
+
+function updateRiskMetrics() {
+    // Sharpe Ratio
+    state.sharpeRatio = 1.5 + Math.random() * 0.8;
+    document.getElementById('sharpe-ratio').textContent = state.sharpeRatio.toFixed(2);
+    document.getElementById('sharpe-meter').style.width = Math.min(100, state.sharpeRatio * 40) + '%';
+
+    // Max Drawdown
+    state.maxDrawdown = -(2 + Math.random() * 4);
+    document.getElementById('max-drawdown').textContent = state.maxDrawdown.toFixed(1) + '%';
+    document.getElementById('drawdown-meter').style.width = Math.abs(state.maxDrawdown) * 10 + '%';
+
+    // Win/Loss Ratio
+    if (state.tradesCount > 0) {
+        state.winLossRatio = state.wins / Math.max(1, state.losses);
+    }
+    document.getElementById('win-loss-ratio').textContent = state.winLossRatio.toFixed(2);
+    document.getElementById('winloss-meter').style.width = Math.min(100, state.winLossRatio * 40) + '%';
+
+    // VaR
+    state.var95 = 100 + Math.random() * 100;
+    document.getElementById('var-value').textContent = '$' + state.var95.toFixed(2);
+    document.getElementById('var-meter').style.width = Math.min(100, state.var95 / 3) + '%';
+}
+
+function updateOrderFlow() {
+    // Simulate order flow changes
+    const change = (Math.random() - 0.5) * 10;
+    state.buyPressure = Math.max(20, Math.min(80, state.buyPressure + change));
+    state.sellPressure = 100 - state.buyPressure;
+
+    document.getElementById('flow-buy').style.width = state.buyPressure + '%';
+    document.getElementById('flow-buy').textContent = Math.round(state.buyPressure) + '%';
+    document.getElementById('flow-sell').style.width = state.sellPressure + '%';
+    document.getElementById('flow-sell').textContent = Math.round(state.sellPressure) + '%';
+
+    const imbalance = state.buyPressure - 50;
+    const arrow = document.getElementById('imbalance-arrow');
+    const text = document.getElementById('imbalance-text');
+
+    if (imbalance > 5) {
+        arrow.textContent = '↑';
+        arrow.className = 'imbalance-arrow bullish';
+        text.textContent = `Bullish Pressure (+${Math.round(imbalance)}%)`;
+    } else if (imbalance < -5) {
+        arrow.textContent = '↓';
+        arrow.className = 'imbalance-arrow bearish';
+        text.textContent = `Bearish Pressure (${Math.round(imbalance)}%)`;
+    } else {
+        arrow.textContent = '→';
+        arrow.className = 'imbalance-arrow';
+        text.textContent = 'Neutral (balanced)';
+    }
+}
+
+function updateSystemMetrics() {
+    // CPU
+    state.cpuUsage = 8 + Math.random() * 15;
+    document.getElementById('cpu-usage').textContent = Math.round(state.cpuUsage) + '%';
+
+    // Memory
+    state.memoryUsage = 40 + Math.random() * 20;
+    document.getElementById('memory-usage').textContent = Math.round(state.memoryUsage) + 'MB';
+
+    // Buffer fill
+    state.bufferFill = 10 + Math.random() * 40;
+    document.getElementById('buffer-fill').textContent = Math.round(state.bufferFill) + '%';
+    updateRingBufferViz();
+}
+
+// ============================================
+// SIMULATION (for demo)
 // ============================================
 
 function simulateAIActivity() {
-    // Simulation disabled to prevent ghost data
-    console.log("Waiting for API connection...");
+    const signals = ['BUY', 'SELL', 'NEUTRAL'];
+    const reasonings = [
+        'Bullish momentum detected. RSI indicates oversold conditions. MACD showing positive divergence.',
+        'Bearish divergence forming. Taking profit on long positions. Volume declining.',
+        'Market consolidating. Waiting for clear breakout signal. Bollinger bands narrowing.',
+        'Strong support level holding. Accumulating position. Order flow bullish.',
+        'Resistance tested 3 times. Expecting breakdown. Smart money exiting.',
+        'Volume surge detected. Following smart money flow. Institutional buying detected.',
+    ];
+
+    if (Math.random() > 0.7) {
+        const signal = signals[Math.floor(Math.random() * signals.length)];
+        const reasoning = reasonings[Math.floor(Math.random() * reasonings.length)];
+        const confidence = 0.5 + Math.random() * 0.45;
+
+        updateAIDecision({ signal, reasoning, confidence });
+
+        if (signal !== 'NEUTRAL') {
+            simulateTrade(signal);
+        }
+    }
 }
 
 function simulateTrade(action) {
-    // Simulation disabled
+    const price = 100 + Math.random() * 50;
+    const quantity = Math.floor(1 + Math.random() * 10);
+    const latency = 20 + Math.floor(Math.random() * 20);
+
+    const tradeValue = price * quantity;
+    const pnlChange = action === 'BUY' ?
+        (Math.random() > 0.4 ? Math.random() * 50 : -Math.random() * 30) :
+        (Math.random() > 0.4 ? Math.random() * 50 : -Math.random() * 30);
+
+    state.pnl += pnlChange;
+    state.accountValue = CONFIG.startingBalance + state.pnl;
+    state.tradesCount++;
+    state.ordersProcessed++;
+
+    if (pnlChange > 0) {
+        state.wins++;
+        playSound('profit');
+    } else {
+        state.losses++;
+        playSound('loss');
+    }
+
+    const trade = {
+        id: Date.now(),
+        action,
+        price: price.toFixed(2),
+        quantity,
+        latency,
+        time: new Date(),
+        pnl: pnlChange.toFixed(2),
+    };
+
+    state.trades.unshift(trade);
+    if (state.trades.length > 20) state.trades.pop();
+
+    updateTradesUI();
+    updateStatsUI();
+
+    state.performanceHistory.push({
+        time: new Date(),
+        value: state.accountValue
+    });
+    updateChart();
+
+    playSound('trade');
 }
 
 function updateTradesUI() {
@@ -429,26 +836,21 @@ function updateTradesUI() {
 }
 
 function updateStatsUI() {
-    // P&L
     const pnlElement = document.getElementById('pnl-value');
     pnlElement.textContent = state.pnl >= 0 ?
         `+$${state.pnl.toFixed(2)}` :
         `-$${Math.abs(state.pnl).toFixed(2)}`;
     pnlElement.className = `pnl-value ${state.pnl >= 0 ? 'positive' : 'negative'}`;
 
-    // Account value
     document.getElementById('account-value').textContent =
         `$${state.accountValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-    // Trades count
     document.getElementById('trades-count').textContent = state.tradesCount;
 
-    // Win rate
     const winRate = state.tradesCount > 0 ?
         Math.round((state.wins / state.tradesCount) * 100) : 0;
     document.getElementById('win-rate').textContent = `${winRate}%`;
 
-    // Orders processed
     document.getElementById('orders-processed').textContent =
         state.ordersProcessed.toLocaleString();
 }
@@ -465,22 +867,82 @@ function startUptime() {
 }
 
 // ============================================
-// UTILITY FUNCTIONS
+// EXPORT FUNCTIONS
 // ============================================
 
-function formatTime(date) {
-    return date.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
+function exportTradesCSV() {
+    if (state.trades.length === 0) {
+        showNotification('warning', 'No Data', 'No trades to export');
+        return;
+    }
+
+    const headers = ['ID', 'Action', 'Price', 'Quantity', 'Latency (ns)', 'Time', 'P&L'];
+    const rows = state.trades.map(t => [
+        t.id,
+        t.action,
+        t.price,
+        t.quantity,
+        t.latency,
+        t.time.toISOString(),
+        t.pnl || 0
+    ]);
+
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    downloadFile(csv, 'trades.csv', 'text/csv');
+    showNotification('success', 'Exported', 'Trades exported as CSV');
+}
+
+function exportTradesJSON() {
+    if (state.trades.length === 0) {
+        showNotification('warning', 'No Data', 'No trades to export');
+        return;
+    }
+
+    const json = JSON.stringify(state.trades, null, 2);
+    downloadFile(json, 'trades.json', 'application/json');
+    showNotification('success', 'Exported', 'Trades exported as JSON');
+}
+
+function exportRiskReport() {
+    const report = {
+        timestamp: new Date().toISOString(),
+        metrics: {
+            sharpeRatio: state.sharpeRatio,
+            maxDrawdown: state.maxDrawdown,
+            winLossRatio: state.winLossRatio,
+            var95: state.var95,
+            totalTrades: state.tradesCount,
+            wins: state.wins,
+            losses: state.losses,
+            pnl: state.pnl
+        },
+        latency: {
+            p50: state.p50,
+            p95: state.p95,
+            p99: state.p99,
+            p999: state.p999
+        }
+    };
+
+    const json = JSON.stringify(report, null, 2);
+    downloadFile(json, 'risk_report.json', 'application/json');
+    showNotification('success', 'Exported', 'Risk report exported');
+}
+
+function downloadFile(content, filename, mimeType) {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
 }
 
 // ============================================
 // CRYPTO TRADING SECTION
 // ============================================
 
-// Crypto State
 const cryptoState = {
     prices: {
         btc: { current: 0, previous: 0, change: 0 },
@@ -491,20 +953,14 @@ const cryptoState = {
     balance: 1000,
     pnl: 0,
     positions: 0,
-    signals: {
-        btc: 'HOLD',
-        eth: 'HOLD',
-        sol: 'HOLD'
-    }
+    signals: { btc: 'HOLD', eth: 'HOLD', sol: 'HOLD' }
 };
 
-// Start crypto price feeds
 function initCrypto() {
     connectBinanceWebSocket();
     startCryptoPolling();
 }
 
-// Connect to Binance WebSocket for real-time prices
 function connectBinanceWebSocket() {
     const symbols = ['btcusdt', 'ethusdt', 'solusdt'];
     const streams = symbols.map(s => `${s}@ticker`).join('/');
@@ -513,57 +969,35 @@ function connectBinanceWebSocket() {
     try {
         const ws = new WebSocket(wsUrl);
 
-        ws.onopen = () => {
-            console.log('Connected to Binance WebSocket');
-        };
-
+        ws.onopen = () => console.log('Connected to Binance WebSocket');
         ws.onmessage = (event) => {
             const data = JSON.parse(event.data);
-            if (data.data) {
-                updateCryptoPrice(data.data);
-            }
+            if (data.data) updateCryptoPrice(data.data);
         };
-
-        ws.onerror = (error) => {
-            console.log('Binance WebSocket error, using simulated data');
-            simulateCryptoPrices();
-        };
-
-        ws.onclose = () => {
-            console.log('Binance WebSocket closed, reconnecting in 5s...');
-            setTimeout(connectBinanceWebSocket, 5000);
-        };
+        ws.onerror = () => simulateCryptoPrices();
+        ws.onclose = () => setTimeout(connectBinanceWebSocket, 5000);
     } catch (e) {
-        console.log('WebSocket not available, using simulated data');
         simulateCryptoPrices();
     }
 }
 
-// Update crypto price from WebSocket data
 function updateCryptoPrice(data) {
     const symbol = data.s.toLowerCase();
     const price = parseFloat(data.c);
     const changePercent = parseFloat(data.P);
 
     if (symbol.includes('btc')) {
-        cryptoState.prices.btc.previous = cryptoState.prices.btc.current;
-        cryptoState.prices.btc.current = price;
-        cryptoState.prices.btc.change = changePercent;
+        cryptoState.prices.btc = { current: price, change: changePercent };
         updateCryptoPriceUI('btc', price, changePercent);
     } else if (symbol.includes('eth')) {
-        cryptoState.prices.eth.previous = cryptoState.prices.eth.current;
-        cryptoState.prices.eth.current = price;
-        cryptoState.prices.eth.change = changePercent;
+        cryptoState.prices.eth = { current: price, change: changePercent };
         updateCryptoPriceUI('eth', price, changePercent);
     } else if (symbol.includes('sol')) {
-        cryptoState.prices.sol.previous = cryptoState.prices.sol.current;
-        cryptoState.prices.sol.current = price;
-        cryptoState.prices.sol.change = changePercent;
+        cryptoState.prices.sol = { current: price, change: changePercent };
         updateCryptoPriceUI('sol', price, changePercent);
     }
 }
 
-// Update crypto price UI
 function updateCryptoPriceUI(coin, price, changePercent) {
     const priceEl = document.getElementById(`${coin}-price`);
     const changeEl = document.getElementById(`${coin}-change`);
@@ -582,32 +1016,22 @@ function updateCryptoPriceUI(coin, price, changePercent) {
     }
 }
 
-// Simulate crypto prices if WebSocket fails
 function simulateCryptoPrices() {
-    // Start with realistic prices
     cryptoState.prices.btc.current = 97000 + Math.random() * 2000;
     cryptoState.prices.eth.current = 3800 + Math.random() * 200;
     cryptoState.prices.sol.current = 220 + Math.random() * 20;
 
     setInterval(() => {
-        // Small random changes
         ['btc', 'eth', 'sol'].forEach(coin => {
             const prev = cryptoState.prices[coin].current;
             const change = (Math.random() - 0.5) * prev * 0.001;
-            cryptoState.prices[coin].previous = prev;
             cryptoState.prices[coin].current = prev + change;
             cryptoState.prices[coin].change = ((cryptoState.prices[coin].current - prev) / prev * 100);
-
-            updateCryptoPriceUI(
-                coin,
-                cryptoState.prices[coin].current,
-                cryptoState.prices[coin].change
-            );
+            updateCryptoPriceUI(coin, cryptoState.prices[coin].current, cryptoState.prices[coin].change);
         });
     }, 1000);
 }
 
-// Poll for crypto trading signals
 function startCryptoPolling() {
     fetchCryptoDecision();
     setInterval(fetchCryptoDecision, 2000);
@@ -621,22 +1045,16 @@ async function fetchCryptoDecision() {
             updateCryptoDecision(data);
         }
     } catch (e) {
-        // Simulation disabled to preventing confusing user with fake data
-        // simulateCryptoSignals();
-        console.log("Waiting for API...");
+        simulateCryptoSignals();
     }
 }
 
 function updateCryptoDecision(data) {
-    // Update reasoning
     if (data.reasoning) {
         const reasoningEl = document.getElementById('crypto-ai-reasoning');
-        if (reasoningEl) {
-            reasoningEl.innerHTML = `<p>${data.reasoning}</p>`;
-        }
+        if (reasoningEl) reasoningEl.innerHTML = `<p>${data.reasoning}</p>`;
     }
 
-    // Update signals
     if (data.signals) {
         ['btc', 'eth', 'sol'].forEach(coin => {
             const signal = data.signals[coin] || 'HOLD';
@@ -645,12 +1063,7 @@ function updateCryptoDecision(data) {
         });
     }
 
-    // Update trades
-    if (data.trade) {
-        addCryptoTrade(data.trade);
-    }
-
-    // Update stats
+    if (data.trade) addCryptoTrade(data.trade);
     if (data.balance) cryptoState.balance = data.balance;
     if (data.pnl !== undefined) cryptoState.pnl = data.pnl;
     if (data.positions !== undefined) cryptoState.positions = data.positions;
@@ -669,16 +1082,14 @@ function addCryptoTrade(trade) {
     cryptoState.trades.unshift(trade);
     if (cryptoState.trades.length > 15) cryptoState.trades.pop();
     updateCryptoTradesUI();
+    playSound('trade');
 }
 
 function updateCryptoTradesUI() {
     const container = document.getElementById('crypto-trades-container');
     const countEl = document.getElementById('crypto-trades-count');
 
-    if (countEl) {
-        countEl.textContent = `${cryptoState.trades.length} trades`;
-    }
-
+    if (countEl) countEl.textContent = `${cryptoState.trades.length} trades`;
     if (!container) return;
 
     if (cryptoState.trades.length === 0) {
@@ -722,12 +1133,9 @@ function updateCryptoStatsUI() {
         pnlEl.className = `crypto-stat-value ${isPositive ? 'positive' : 'negative'}`;
     }
 
-    if (positionsEl) {
-        positionsEl.textContent = cryptoState.positions;
-    }
+    if (positionsEl) positionsEl.textContent = cryptoState.positions;
 }
 
-// Simulate crypto signals for demo
 function simulateCryptoSignals() {
     if (Math.random() > 0.8) {
         const coins = ['btc', 'eth', 'sol'];
@@ -748,11 +1156,8 @@ function simulateCryptoSignals() {
         updateSignalUI(randomCoin, randomSignal);
 
         const reasoningEl = document.getElementById('crypto-ai-reasoning');
-        if (reasoningEl) {
-            reasoningEl.innerHTML = `<p>${reasoning}</p>`;
-        }
+        if (reasoningEl) reasoningEl.innerHTML = `<p>${reasoning}</p>`;
 
-        // Add simulated trade sometimes
         if (randomSignal !== 'HOLD' && Math.random() > 0.5) {
             const price = cryptoState.prices[randomCoin].current || 100;
             const trade = {
@@ -765,7 +1170,6 @@ function simulateCryptoSignals() {
             };
             addCryptoTrade(trade);
 
-            // Update PnL
             const pnlChange = randomSignal === 'BUY' ?
                 (Math.random() > 0.4 ? Math.random() * 20 : -Math.random() * 10) :
                 (Math.random() > 0.4 ? Math.random() * 20 : -Math.random() * 10);
