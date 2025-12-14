@@ -64,8 +64,8 @@ In Railway dashboard:
 2. Go to **"Variables"** tab
 3. Add these variables:
    ```
-   API_KEY=yrsNxODVYFDkB4LaKLnnixsLmTQpAxSLnjB4E0nMjq0NS2Ba8DrDzBvJ7VhkI9Rn
-   API_SECRET=p927MzgtXXh9TZ2aqUE0UZEmlDUaXeREagHgKUK6VeZKphBwYb6VwEeJHCZYdQli
+   API_KEY=YOUR_BINANCE_API_KEY_HERE
+   API_SECRET=YOUR_BINANCE_SECRET_HERE
    USE_TESTNET=True
    ```
 

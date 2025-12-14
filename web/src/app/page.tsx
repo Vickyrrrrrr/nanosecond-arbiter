@@ -8,7 +8,7 @@ import { PriceCards } from '@/components/dashboard/PriceCards';
 import { PnLPanel } from '@/components/dashboard/PnLPanel';
 import { AccountSummary } from '@/components/dashboard/AccountSummary';
 import { PositionsTable } from '@/components/dashboard/PositionsTable';
-import { AiStatus } from '@/components/dashboard/AiStatus';
+
 import { MarketPrice } from '@/types';
 import { cn } from '@/lib/utils';
 import dynamic from 'next/dynamic';
