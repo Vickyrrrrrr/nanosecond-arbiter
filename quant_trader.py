@@ -216,6 +216,12 @@ class GenericBot:
                         symbols_to_remove.append(sym)
                 
                 for sym in symbols_to_remove:
+                    # Grace period of 5 seconds for new positions to appear on exchange
+                    pos = self.positions.get(sym, {})
+                    if time.time() - pos.get('creation_time', 0) < 5:
+                        print(f"⏳ {self.mode} Waiting for exchange sync: {sym}")
+                        continue
+                        
                     print(f"✅ {self.mode} CONFIRMED CLOSE: {sym} removed from state.")
                     del self.positions[sym]
                     
@@ -253,7 +259,7 @@ class GenericBot:
         if order:
              risk_dist = abs(price - sl)
              tp = (price + 1.5*risk_dist) if signal == "LONG" else (price - 1.5*risk_dist)
-             self.positions[symbol] = {"symbol": symbol, "side": signal, "entry_price": price, "quantity": qty, "sl": sl, "tp": tp}
+             self.positions[symbol] = {"symbol": symbol, "side": signal, "entry_price": price, "quantity": qty, "sl": sl, "tp": tp, "creation_time": time.time()}
 
     def manage_position(self, symbol, price, rsi):
         pos = self.positions[symbol]
