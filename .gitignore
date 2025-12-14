@@ -13,7 +13,7 @@ venv/
 performance_*.json
 
 # API Keys (NEVER push this!)
-config.py
+/config.py
 
 # IDE
 .vscode/
@@ -27,3 +27,24 @@ benchmark_data.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Secrets
+.env
+.env.local
+
+# Logs
+*.log
+trader.log
+frontend.log
+
+# Node (Web)
+web/node_modules/
+web/.next/
+web/out/
+
+# Python
+__pycache__/
+*.pyc
+
+# Project Specific
+keys.json

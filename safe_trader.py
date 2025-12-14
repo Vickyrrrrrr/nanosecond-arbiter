@@ -360,8 +360,8 @@ def main():
     while True:
         try:
             trader.analyze_market_and_decide()
-            print("⏳ Cooldown 120s...")
-            time.sleep(120)
+            print("⏳ Cooldown 180s...")
+            time.sleep(180)
         except KeyboardInterrupt:
             print("🛑 Stopping...")
             break
