@@ -53,6 +53,17 @@ export function PnLPanel({ data, unrealizedPnL }: { data: TraderState | null, un
                             {totalPnl >= 0 ? '+' : ''}{formatMoney(totalPnl)}
                         </span>
                     </motion.div>
+
+
+                    {/* Breakdown Row */}
+                    <div className="flex gap-4 mt-2 text-[10px] font-mono opacity-80">
+                        <span className="flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
+                            CRYPTO: {((data?.pnl_spot || 0) + (data?.pnl_futures || 0)) >= 0 ? '+' : ''}
+                            {formatMoney((data?.pnl_spot || 0) + (data?.pnl_futures || 0))}
+                        </span>
+
+                    </div>
                 </div>
 
                 {/* SECTION B & C: LIVE vs PREVIOUS */}
@@ -87,6 +98,6 @@ export function PnLPanel({ data, unrealizedPnL }: { data: TraderState | null, un
                     </div>
                 </div>
             </CardContent>
-        </Card>
+        </Card >
     );
 }

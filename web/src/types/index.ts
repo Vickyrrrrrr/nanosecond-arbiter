@@ -12,9 +12,12 @@ export interface TraderState {
     balance: number;
     balance_spot: number;
     balance_futures: number;
+    balance_forex: number;
     pnl: number;
     pnl_spot: number;
     pnl_futures: number;
+    pnl_forex: number;
+    // New strict sync fields
     // New strict sync fields
     margin_spot?: number;
     margin_futures?: number;
@@ -38,4 +41,4 @@ export interface Position {
 }
 
 export const SUPPORTED_PAIRS = ['btcusdt', 'ethusdt', 'solusdt'];
-export const API_URL = 'http://localhost:8083/api/ai-decision';
+export const API_URL = '/api/ai-decision';

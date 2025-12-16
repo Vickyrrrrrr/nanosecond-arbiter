@@ -51,7 +51,7 @@ class SpotExecution:
             params = {'timestamp': int(time.time() * 1000)}
             params['signature'] = self._sign(params)
             
-            resp = requests.get(f"{self.base_url}/api/v3/account", params=params, headers=headers)
+            resp = requests.get(f"{self.base_url}/api/v3/account", params=params, headers=headers, timeout=10)
             if resp.status_code == 200:
                 data = resp.json()
                 # Debug Balance

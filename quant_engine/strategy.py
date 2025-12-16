@@ -9,6 +9,7 @@ class Strategy:
     @staticmethod
     def calculate_indicators(df):
         # EMA
+        df['ema_20'] = df['close'].ewm(span=20, adjust=False).mean()
         df['ema_50'] = df['close'].ewm(span=EMA_FAST, adjust=False).mean()
         df['ema_200'] = df['close'].ewm(span=EMA_SLOW, adjust=False).mean()
         
@@ -75,68 +76,116 @@ class Strategy:
         """
         last = df.iloc[-1]
         
-        # 0. Volatility Filter
-        if last['atr'] > (2 * last['avg_atr']):
-            return None, None, 0.0
-            
+        # 0. Volatility Filter (Extreme check)
+        # However, for Breakdown mode, we WANT expansion. 
+        # So we move this filter inside the branches.
+
         regime = Strategy.detect_regime(last)
         price = last['close']
         atr = last['atr']
         
         confidence = 0.5 # Base Confidence
         
-        # === LONG CONDITIONS ===
+        # === 1. PRIMARY: RETEST MODE (Mean Reversion) ===
+        
         if regime == "BULLISH":
-            # Bonus: Strong Trend
-            if last['ema_50_slope'] > 0: confidence += 0.1
-            
-            # 1. Price Pullback to Support
-            valid_supports = supports[supports < price]
-            if len(valid_supports) > 0:
-                nearest_supp = valid_supports.max()
-                dist_to_supp = price - nearest_supp
+            # [LONG] Pullback to Support
+            if last['atr'] <= (2 * last['avg_atr']): # Volatility Safety
+                if last['ema_50_slope'] > 0: confidence += 0.1
                 
-                # Perfect touch bonus (within 0.3 ATR)
-                if dist_to_supp <= (0.3 * atr): confidence += 0.2
-                
-                if dist_to_supp <= (0.5 * atr):
-                    # 2. Strict RSI (40-50)
-                    # Ideal RSI for pullback buy is ~45.
-                    if RSI_LONG_MIN <= last['rsi'] <= RSI_LONG_MAX:
-                        dist_from_ideal = abs(last['rsi'] - 45)
-                        rsi_score = max(0, 0.2 - (dist_from_ideal * 0.02)) # Max 0.2 bonus
-                        confidence += rsi_score
-                        
-                        # 3. Price vs 50 EMA: Price >= 50EMA - 1ATR
-                        limit = last['ema_50'] - (1 * atr)
-                        if price >= limit:
-                             if last['close'] > last['open']: # Green Candle
-                                 return "LONG", nearest_supp, min(confidence, 1.0)
+                valid_supports = supports[supports < price]
+                if len(valid_supports) > 0:
+                    nearest_supp = valid_supports.max()
+                    dist_to_supp = price - nearest_supp
+                    
+                    if dist_to_supp <= (0.3 * atr): confidence += 0.2
+                    
+                    if dist_to_supp <= (0.5 * atr):
+                        # Strict RSI (40-50)
+                        if RSI_LONG_MIN <= last['rsi'] <= RSI_LONG_MAX:
+                            dist_from_ideal = abs(last['rsi'] - 45)
+                            rsi_score = max(0, 0.2 - (dist_from_ideal * 0.02))
+                            confidence += rsi_score
+                            
+                            limit = last['ema_50'] - (1 * atr)
+                            if price >= limit:
+                                 if last['close'] > last['open']: # Green Candle
+                                     return "LONG", nearest_supp, min(confidence, 1.0)
 
-        # === SHORT CONDITIONS ===
         elif regime == "BEARISH":
-            if last['ema_50_slope'] < 0: confidence += 0.1
+            # [SHORT] Rally to Resistance
+            if last['atr'] <= (2 * last['avg_atr']): # Volatility Safety
+                if last['ema_50_slope'] < 0: confidence += 0.1
+                
+                valid_res = resistances[resistances > price]
+                if len(valid_res) > 0:
+                    nearest_res = valid_res.min()
+                    dist_to_res = nearest_res - price
+                    
+                    if dist_to_res <= (0.3 * atr): confidence += 0.2
+                    
+                    if dist_to_res <= (0.5 * atr):
+                        # Strict RSI (55-65)
+                        if RSI_SHORT_MIN <= last['rsi'] <= RSI_SHORT_MAX:
+                            dist_from_ideal = abs(last['rsi'] - 60)
+                            rsi_score = max(0, 0.2 - (dist_from_ideal * 0.02))
+                            confidence += rsi_score
+                            
+                            limit = last['ema_50'] + (1 * atr)
+                            if price <= limit:
+                                if last['close'] < last['open']: # Red Candle
+                                    return "SHORT", nearest_res, min(confidence, 1.0) # PRIMARY SIGNAL
+
+        # === 2. SECONDARY: HYBRID BREAKOUT MODE (Momentum Long + Short) ===
+        # Only if no Retest trade found.
+        # Captures strong moves that break structure without looking back.
+        
+        # A. SHORT BREAKDOWN
+        # Condition: Close < Support (Clean Break)
+        broken_supports = supports[(supports > last['close']) & (supports < last['open'])]
+        
+        if len(broken_supports) > 0:
+            broken_level = broken_supports.min()
             
-            # 1. Price Rally to Resistance
-            valid_res = resistances[resistances > price]
-            if len(valid_res) > 0:
-                nearest_res = valid_res.min()
-                dist_to_res = nearest_res - price
+            # Trend Filter (Bearish Stack)
+            if last['ema_20'] < last['ema_50'] and price < last['ema_20']:
                 
-                if dist_to_res <= (0.3 * atr): confidence += 0.2
+                # Momentum Filter (RSI < 45 OR Big Red Candle)
+                candle_body = last['open'] - last['close'] # Positive for red
+                is_big_candle = candle_body > (1.2 * last['atr'])
                 
-                if dist_to_res <= (0.5 * atr):
-                    # 2. Strict RSI (55-65)
-                    # Ideal RSI for short is ~60
-                    if RSI_SHORT_MIN <= last['rsi'] <= RSI_SHORT_MAX:
-                        dist_from_ideal = abs(last['rsi'] - 60)
-                        rsi_score = max(0, 0.2 - (dist_from_ideal * 0.02))
-                        confidence += rsi_score
-                        
-                        # 3. Price vs 50 EMA: Price <= 50EMA + 1ATR
-                        limit = last['ema_50'] + (1 * atr)
-                        if price <= limit:
-                            if last['close'] < last['open']: # Red Candle
-                                return "SHORT", nearest_res, min(confidence, 1.0)
+                if last['rsi'] < 45 or is_big_candle:
+                     # Volatility/Volume Confirmation
+                     is_vol_expanded = last['atr'] > last['avg_atr']
+                     is_high_volume = last['volume'] > (1.5 * last['vol_mean'])
+                     
+                     if (is_vol_expanded or is_big_candle) and is_high_volume:
+                         bd_confidence = 0.5 # 50% Confidence for Breakouts
+                         print(f"📉 BREAKDOWN {symbol}: Level={broken_level:.2f}, Vol={last['volume']:.0f}")
+                         return "SHORT", price, bd_confidence
+
+        # B. LONG BREAKOUT
+        # Condition: Close > Resistance (Clean Break)
+        broken_resistances = resistances[(resistances < last['close']) & (resistances > last['open'])]
+        
+        if len(broken_resistances) > 0:
+            broken_level = broken_resistances.max()
+            
+            # Trend Filter (Bullish Stack)
+            if last['ema_20'] > last['ema_50'] and price > last['ema_20']:
+                
+                # Momentum Filter (RSI > 55 OR Big Green Candle)
+                candle_body = last['close'] - last['open']
+                is_big_candle = candle_body > (1.2 * last['atr'])
+                
+                if last['rsi'] > 55 or is_big_candle:
+                    # Volatility/Volume Confirmation
+                    is_vol_expanded = last['atr'] > last['avg_atr']
+                    is_high_volume = last['volume'] > (1.5 * last['vol_mean'])
+                    
+                    if (is_vol_expanded or is_big_candle) and is_high_volume:
+                        bo_confidence = 0.5 # 50% Confidence for Breakouts
+                        print(f"🚀 BREAKOUT {symbol}: Level={broken_level:.2f}, Vol={last['volume']:.0f}")
+                        return "LONG", price, bo_confidence
 
         return None, None, 0.0

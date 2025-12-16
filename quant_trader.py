@@ -8,7 +8,11 @@ from quant_engine.strategy_futures import FuturesStrategy
 from quant_engine.risk import RiskManager
 from quant_engine.execution_futures import FuturesExecution
 from quant_engine.execution_spot import SpotExecution
-from quant_engine.config import SYMBOLS, TIMEFRAMES, TIMEFRAME_WEIGHTS, CONFIDENCE_THRESHOLD, LEVERAGE_MAP, COOLDOWN_CANDLES
+from quant_engine.execution_forex import ForexExecution
+from quant_engine.strategy import Strategy as FuturesStrategy # Base is Futures
+from quant_engine.strategy_spot import SpotStrategy
+from quant_engine.strategy_forex import ForexStrategy
+from quant_engine.config import SYMBOLS, SYMBOLS_FOREX, TIMEFRAMES, TIMEFRAME_WEIGHTS, CONFIDENCE_THRESHOLD, LEVERAGE_MAP, COOLDOWN_CANDLES
 
 # ============================================================================
 # CONFIGURATION
@@ -17,6 +21,7 @@ BINANCE_API_KEY = os.environ.get("BINANCE_API_KEY", "")
 BINANCE_API_SECRET = os.environ.get("BINANCE_API_SECRET", "")
 BINANCE_SPOT_KEY = os.environ.get("BINANCE_SPOT_API_KEY", "")
 BINANCE_SPOT_SECRET = os.environ.get("BINANCE_SPOT_API_SECRET", "")
+TWELVE_DATA_API_KEY = os.environ.get("TWELVE_DATA_API_KEY", "")
 DASHBOARD_URL = "http://localhost:8083/api/ai-decision"
 
 class GenericBot:
@@ -45,7 +50,11 @@ class GenericBot:
         
         self.positions = {} 
         self.kill_switch = False
-        self.cooldowns = {s: 0 for s in SYMBOLS}
+        self.positions = {} 
+        self.kill_switch = False
+        target_symbols = SYMBOLS
+        if mode == "FOREX": target_symbols = SYMBOLS_FOREX
+        self.cooldowns = {s: 0 for s in target_symbols}
         
         if mode == "FUTURES":
             print(f"🛡️ {mode}: Setting Leverage...")
@@ -132,7 +141,15 @@ class GenericBot:
         candidates = []
         rejected = []
 
-        for symbol in SYMBOLS:
+        candidates = []
+        rejected = []
+        
+        # Select Symbols based on Mode
+        target_symbols = SYMBOLS
+        if self.mode == "FOREX":
+            target_symbols = SYMBOLS_FOREX
+
+        for symbol in target_symbols:
             if time.time() < self.cooldowns.get(symbol, 0): continue
             
             try:
@@ -340,6 +357,7 @@ if __name__ == "__main__":
     # Init with NO CAP. Pure Exchange Data.
     spot_bot = GenericBot("SPOT", SpotExecution, SpotStrategy, BINANCE_SPOT_KEY, BINANCE_SPOT_SECRET)
     futures_bot = GenericBot("FUTURES", FuturesExecution, FuturesStrategy, BINANCE_API_KEY, BINANCE_API_SECRET)
+    forex_bot = GenericBot("FOREX", ForexExecution, ForexStrategy, TWELVE_DATA_API_KEY, "DEMO_SEC") # Uses Hardened Forex Strat
     
     print("✅ System Active. Scanning...")
     
@@ -347,6 +365,14 @@ if __name__ == "__main__":
         try:
             spot_bot.run_cycle()
             futures_bot.run_cycle()
+            forex_bot.run_cycle()
+            
+            # Broadcast Forex Market Data EVERY CYCLE (1s)
+            try:
+                market_data = forex_bot.exec.get_market_snapshot()
+                requests.post(f"{DASHBOARD_URL.replace('/ai-decision', '/forex/update')}", json=market_data, timeout=0.5)
+            except: pass
+
             time.sleep(1)
         except KeyboardInterrupt: break
         except Exception as e:

@@ -8,8 +8,9 @@ import os
 import json
 import threading
 from http.server import HTTPServer, SimpleHTTPRequestHandler
-from urllib.parse import urlparse
+from urllib.parse import urlparse, parse_qs
 import shutil
+import time
 
 
 # Shared state for trading data
@@ -20,9 +21,11 @@ trading_state = {
     "balance": 10000,
     "balance_spot": 5000.0,
     "balance_futures": 5000.0,
+    "balance_forex": 10000.0,
     "pnl": 0,
     "pnl_spot": 0.0,
     "pnl_futures": 0.0,
+    "pnl_forex": 0.0,
     "position": 0,
     "tradesCount": 0,
     "trade": None,
@@ -30,6 +33,11 @@ trading_state = {
     "positions": {},  # Format: {symbol: {entry_price, current_price, quantity, capital, pnl, pnl_percent}}
     "open_orders": [],
     "recent_trades": []
+}
+
+forex_market_state = {
+    "prices": {},  # { "eurusd": { price: 1.05, change: 0.1 } }
+    "candles": {}  # { "eurusd": [ { time, open, high, low, close } ] }
 }
 
 state_lock = threading.Lock()
@@ -59,6 +67,19 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         if parsed.path.startswith('/api/'):
             if parsed.path == '/api/ai-decision':
                 self.send_json_response(trading_state)
+            elif parsed.path == '/api/trading-data':
+                with state_lock:
+                    self.send_json_response(trading_state)
+            elif parsed.path == '/api/forex/market-data':
+                with state_lock:
+                    self.send_json_response(forex_market_state.get("prices", {}))
+            elif parsed.path == '/api/forex/candles':
+                query = parse_qs(parsed.query)
+                symbol = query.get('symbol', [None])[0]
+                if symbol and symbol in forex_market_state.get("candles", {}):
+                    self.send_json_response(forex_market_state["candles"][symbol])
+                else:
+                    self.send_json_response([], status=404)
             elif parsed.path == '/api/orderbook':
                 self.send_json_response({"asks": [], "bids": []})
             elif parsed.path == '/api/metrics':
@@ -69,6 +90,16 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 })
             elif parsed.path == '/api/crypto-decision':
                 self.send_json_response({"signals": {"btc": "HOLD", "eth": "HOLD", "sol": "HOLD"}})
+            elif parsed.path == '/api/health':
+                with state_lock:
+                    last_update = trading_state.get("last_update", 0)
+                    now = int(time.time() * 1000)
+                    is_fresh = (now - last_update) < 5000 if last_update > 0 else False
+                    self.send_json_response({
+                        "status": "healthy" if is_fresh else "stale",
+                        "last_update_ms": last_update,
+                        "age_ms": now - last_update if last_update > 0 else -1
+                    })
             else:
                 self.send_error(404, "Endpoint not found")
             return
@@ -120,20 +151,39 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                     
                     # Update other fields generally
                     for k, v in data.items():
-                        if k not in ["balance_spot", "balance_futures", "pnl_spot", "pnl_futures"]:
+                        if k not in ["balance_spot", "balance_futures", "balance_forex", "pnl_spot", "pnl_futures", "pnl_forex"]:
                             trading_state[k] = v
                     
-                    # Aggregate total balance for UI simplicity if needed
+                    # Aggregate total balance
                     s = trading_state.get("balance_spot", 0)
                     f = trading_state.get("balance_futures", 0)
-                    trading_state["balance"] = s + f
+                    fx = trading_state.get("balance_forex", 0)
+                    trading_state["balance"] = s + f + fx
                     
                     # Aggregate total PnL
                     ps = trading_state.get("pnl_spot", 0)
                     pf = trading_state.get("pnl_futures", 0)
-                    trading_state["pnl"] = ps + pf
+                    pfx = trading_state.get("pnl_forex", 0)
+                    trading_state["pnl"] = ps + pf + pfx
+                    
+                    # Track last update time for health checks
+                    trading_state["last_update"] = int(time.time() * 1000)
+                self.send_json_response({"status": "ok"})
             except Exception as e:
                 self.send_json_response({"error": str(e)}, status=400)
+        elif parsed.path == '/api/forex/update':
+            # Receive Forex Market Data from Bot
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            try:
+                data = json.loads(body.decode('utf-8'))
+                with state_lock:
+                    if "prices" in data: forex_market_state["prices"] = data["prices"]
+                    if "candles" in data: forex_market_state["candles"] = data["candles"]
+                self.send_json_response({"status": "ok"})
+            except Exception as e:
+                self.send_json_response({"error": str(e)}, status=400)
+
         elif parsed.path == '/api/order':
             # Accept order submissions
             content_length = int(self.headers.get('Content-Length', 0))

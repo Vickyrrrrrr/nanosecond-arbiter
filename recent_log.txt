@@ -1,0 +1,471 @@
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🤖 HYBRID QUANT SYSTEM STARTING ( STRICT EXCHANGE SYNC )...
+⌛ SPOT: waiting for exchange connection...
+✅ SPOT Connected. Wallet: $11291.95
+⌛ FUTURES: waiting for exchange connection...
+✅ FUTURES Connected. Wallet: $5069.90
+🛡️ FUTURES: Setting Leverage...
+🔧 Leverage set to 3x for BTCUSDT
+🔧 Leverage set to 3x for ETHUSDT
+🔧 Leverage set to 2x for SOLUSDT
+🔄 FUTURES: Syncing active positions...
+✅ System Active. Scanning...
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🤖 HYBRID QUANT SYSTEM STARTING ( STRICT EXCHANGE SYNC )...
+⌛ SPOT: waiting for exchange connection...
+Traceback (most recent call last):
+  File "/Users/ujjwaldixit/nanosecond-arbiter/quant_trader.py", line 222, in <module>
+    spot_bot = GenericBot("SPOT", SpotExecution, SpotStrategy, BINANCE_SPOT_KEY, BINANCE_SPOT_SECRET)
+  File "/Users/ujjwaldixit/nanosecond-arbiter/quant_trader.py", line 38, in __init__
+    print(f"✅ {mode} Connected. Wallet: ${acct_data['wallet_balance']:.2f}")
+TypeError: 'float' object is not subscriptable
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🤖 HYBRID QUANT SYSTEM STARTING ( STRICT EXCHANGE SYNC )...
+⌛ SPOT: waiting for exchange connection...
+✅ SPOT Connected. Wallet: $10000.00
+⌛ FUTURES: waiting for exchange connection...
+Traceback (most recent call last):
+  File "/Users/ujjwaldixit/nanosecond-arbiter/quant_trader.py", line 223, in <module>
+    futures_bot = GenericBot("FUTURES", FuturesExecution, FuturesStrategy, BINANCE_API_KEY, BINANCE_API_SECRET)
+  File "/Users/ujjwaldixit/nanosecond-arbiter/quant_trader.py", line 38, in __init__
+    print(f"✅ {mode} Connected. Wallet: ${acct_data['wallet_balance']:.2f}")
+TypeError: 'float' object is not subscriptable
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🤖 HYBRID QUANT SYSTEM STARTING ( STRICT EXCHANGE SYNC )...
+⌛ SPOT: waiting for exchange connection...
+✅ SPOT Connected. Wallet: $10000.00
+⌛ FUTURES: waiting for exchange connection...
+✅ FUTURES Connected. Wallet: $10000.00
+🛡️ FUTURES: Setting Leverage...
+🔄 FUTURES: Syncing active positions...
+✅ System Active. Scanning...
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🤖 HYBRID QUANT SYSTEM STARTING ( STRICT EXCHANGE SYNC )...
+⌛ SPOT: waiting for exchange connection...
+✅ SPOT Connected. Wallet: $11291.95
+⌛ FUTURES: waiting for exchange connection...
+✅ FUTURES Connected. Wallet: $5069.90
+🛡️ FUTURES: Setting Leverage...
+🔧 Leverage set to 3x for BTCUSDT
+🔧 Leverage set to 3x for ETHUSDT
+🔧 Leverage set to 2x for SOLUSDT
+🔄 FUTURES: Syncing active positions...
+✅ System Active. Scanning...
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🤖 HYBRID QUANT SYSTEM STARTING ( STRICT EXCHANGE SYNC )...
+⌛ SPOT: waiting for exchange connection...
+✅ SPOT Connected. Wallet: $10000.00
+⌛ FUTURES: waiting for exchange connection...
+✅ FUTURES Connected. Wallet: $10000.00
+🛡️ FUTURES: Setting Leverage...
+🔄 FUTURES: Syncing active positions...
+✅ System Active. Scanning...
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+💓 SPOT Scanning... Balance: $10000.00
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+💓 FUTURES Scanning... Balance: $10000.00
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+💓 FUTURES Scanning... Balance: $10000.00
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+💓 FUTURES Scanning... Balance: $10000.00
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error BTCUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error ETHUSDT: too many values to unpack (expected 2)
+⚠️ Analysis Error SOLUSDT: too many values to unpack (expected 2)
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🤖 HYBRID QUANT SYSTEM STARTING ( STRICT EXCHANGE SYNC )...
+⌛ SPOT: waiting for exchange connection...
+✅ SPOT Connected. Wallet: $10000.00
+⌛ FUTURES: waiting for exchange connection...
+✅ FUTURES Connected. Wallet: $10000.00
+🛡️ FUTURES: Setting Leverage...
+🔄 FUTURES: Syncing active positions...
+✅ System Active. Scanning...
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🤖 HYBRID QUANT SYSTEM STARTING ( STRICT EXCHANGE SYNC )...
+⌛ SPOT: waiting for exchange connection...
+✅ SPOT Connected. Wallet: $10000.00
+⌛ FUTURES: waiting for exchange connection...
+✅ FUTURES Connected. Wallet: $10000.00
+🛡️ FUTURES: Setting Leverage...
+🔄 FUTURES: Syncing active positions...
+✅ System Active. Scanning...
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 FUTURES Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+💓 SPOT Scanning... Balance: $10000.00
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🤖 HYBRID QUANT SYSTEM STARTING ( STRICT EXCHANGE SYNC )...
+⌛ SPOT: waiting for exchange connection...
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+⚠️ No Spot API Key -> Returning None
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🤖 HYBRID QUANT SYSTEM STARTING ( STRICT EXCHANGE SYNC )...
+⌛ SPOT: waiting for exchange connection...
+✅ SPOT Connected. Wallet: $11291.95
+⌛ FUTURES: waiting for exchange connection...
+✅ FUTURES Connected. Wallet: $5069.90
+🛡️ FUTURES: Setting Leverage...
+🔧 Leverage set to 3x for BTCUSDT
+🔧 Leverage set to 3x for ETHUSDT
+🔧 Leverage set to 2x for SOLUSDT
+🔄 FUTURES: Syncing active positions...
+✅ System Active. Scanning...
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+🤖 HYBRID QUANT SYSTEM STARTING ( STRICT EXCHANGE SYNC )...
+⌛ SPOT: waiting for exchange connection...
+✅ SPOT Connected. Wallet: $11291.95
+⌛ FUTURES: waiting for exchange connection...
+✅ FUTURES Connected. Wallet: $5069.90
+🛡️ FUTURES: Setting Leverage...
+🔧 Leverage set to 3x for BTCUSDT
+🔧 Leverage set to 3x for ETHUSDT
+🔧 Leverage set to 2x for SOLUSDT
+🔄 FUTURES: Syncing active positions...
+✅ System Active. Scanning...
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 FUTURES Scanning... Balance: $5069.90
+💓 FUTURES Scanning... Balance: $5069.90
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95
+💓 SPOT Scanning... Balance: $11291.95

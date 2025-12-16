@@ -51,5 +51,33 @@ class RiskManager:
             if liq_dist < (2 * sl_dist):
                 print(f"⚠️ {self.account_type} Reject: Liq Risk too high.")
                 return 0.0
+        
+        elif self.account_type == "FOREX":
+            # 3. Forex Lot Sizing (Units)
+            # qty is currently in "Currency Units" (e.g. 100,000 EUR) because price_diff is in Quote Currency
+            # and Equity is in USD.
+            # Base calc: Units = Amount_Risked / SL_Distance
+            
+            # Example: Risk $100. SL 20 pips (0.0020). 
+            # Units = 100 / 0.0020 = 50,000 units (0.5 lots).
+            # This works directly for USD quote pairs (EURUSD).
+            # For USDJPY, price_diff is in JPY. Risk is USD. We need to convert Risk to JPY.
+            
+            if "JPY" in symbol:
+                # Convert risk amt to JPY approx
+                risk_amt = risk_amt * entry_price # Approx conversion
+                qty = risk_amt / price_diff
+                
+            # Round to MinLot (0.01 = 1000 units)
+            standard_lot = 100000
+            lots = qty / standard_lot
+            lots = round(lots, 2)
+            
+            # Convert back to UNITS for the Execution engine to handle
+            qty = lots * standard_lot
+            
+            if lots < 0.01:
+                print(f"⚠️ FOREX Reject: Size {lots} lots too small")
+                return 0.0
 
         return qty
