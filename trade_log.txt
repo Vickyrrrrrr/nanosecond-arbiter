@@ -1,0 +1,2665 @@
+/Users/ujjwaldixit/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+✅ Upstox Streamer: Configured
+🚀 Upstox Streamer (SDK V3): Started Background Thread
+🔌 Connecting to Upstox V3 Feed for: ['NSE_INDEX|Nifty 50', 'NSE_INDEX|Nifty Bank']
+✅ Upstox: Connected as Ujjwal Dixit
+
+✅ UPSTOX Connection Verified: Ready for Trading
+
+============================================================
+🇮🇳 INDIAN F&O BREAKOUT TRADER
+============================================================
+Instruments: NIFTY 50, BANK NIFTY
+Capital: ₹100,000
+Trading Hours: 09:20 - 15:20 IST
+NO indicators - Only price, structure, volatility
+============================================================
+🚀 Trader Started. Monitoring ['NIFTY', 'BANKNIFTY']...
+   📡 Sending Dashboard Update: 0 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:36:18 IST
+────────────────────────────────────────────────────────────
+🔄 Daily reset complete for 2025-12-17
+🔍 Hydrating NIFTY via https://api.upstox.com/v3/market-quote/ltp params={'instrument_key': 'NSE_INDEX|Nifty 50'}
+✅ Hydrated NIFTY: 25815.95
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox V3 Feed: Connected
+✅ Upstox Candles for NIFTY: 13. Last: 25851.35 @ 1765878300
+
+🎯 BREAKDOWN on NIFTY
+   Type: BEARISH_BREAKDOWN
+   Direction: SHORT
+   Entry: ₹25851.35
+   Stop: ₹25905.98
+   Target: ₹25796.72
+   ✅ EXECUTED: 1 lot(s) (50 units)
+   🚫 BANKNIFTY: High Latency (1030ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹100,000 | Total P&L: ₹+0
+   NIFTY: 1 trades | P&L: ₹+0
+   BANKNIFTY: 0 trades | P&L: ₹+0
+   📍 NIFTY SHORT @ ₹25851
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+⚠️ MANUAL TRIGGER DETECTED: BUY NIFTY
+   🔍 Manual Trigger Price Fetch: NIFTY = 25815.3
+
+🎯 FORCED_DAILY on NIFTY
+   Type: FORCED_TRADE
+   Direction: LONG
+   Entry: ₹25815.30
+   Stop: ₹25765.30
+   Target: ₹25915.30
+   ✅ EXECUTED: 1 lot(s) (50 units)
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:37:18 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+
+🎯 BREAKDOWN on BANKNIFTY
+   Type: BEARISH_BREAKDOWN
+   Direction: SHORT
+   Entry: ₹59010.60
+   Stop: ₹59101.59
+   Target: ₹58919.61
+   ✅ EXECUTED: 1 lot(s) (25 units)
+   📡 Sending Dashboard Update: 2 positions
+
+💼 Capital: ₹100,000 | Total P&L: ₹+0
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 1 trades | P&L: ₹+0
+   📍 NIFTY LONG @ ₹25815
+   📍 BANKNIFTY SHORT @ ₹59011
+✅ WIN [BANKNIFTY]: TAKE PROFIT | +₹3,135
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:38:18 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+
+🎯 BREAKDOWN on BANKNIFTY
+   Type: BEARISH_BREAKDOWN
+   Direction: SHORT
+   Entry: ₹59010.60
+   Stop: ₹59101.59
+   Target: ₹58919.61
+   ✅ EXECUTED: 1 lot(s) (25 units)
+   📡 Sending Dashboard Update: 2 positions
+
+💼 Capital: ₹103,135 | Total P&L: ₹+3,135
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 2 trades | P&L: ₹+3,135
+   📍 NIFTY LONG @ ₹25815
+   📍 BANKNIFTY SHORT @ ₹59011
+✅ WIN [BANKNIFTY]: TAKE PROFIT | +₹2,976
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:39:18 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+   🚫 BANKNIFTY: High Latency (1071ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹106,111 | Total P&L: ₹+6,111
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 2 trades | P&L: ₹+6,111
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:40:19 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+
+🎯 BREAKDOWN on BANKNIFTY
+   Type: BEARISH_BREAKDOWN
+   Direction: SHORT
+   Entry: ₹59010.60
+   Stop: ₹59101.59
+   Target: ₹58919.61
+   ✅ EXECUTED: 1 lot(s) (25 units)
+   📡 Sending Dashboard Update: 2 positions
+
+💼 Capital: ₹106,111 | Total P&L: ₹+6,111
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+6,111
+   📍 NIFTY LONG @ ₹25815
+   📍 BANKNIFTY SHORT @ ₹59011
+✅ WIN [BANKNIFTY]: TAKE PROFIT | +₹3,189
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:41:20 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:42:21 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+   🚫 BANKNIFTY: High Latency (1208ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by ConnectTimeoutError(<HTTPConnection(host='localhost', port=8083) at 0x10b67afd0>, 'Connection to localhost timed out. (connect timeout=2)'))
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:43:21 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+   🚫 BANKNIFTY: High Latency (1397ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:44:22 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+   🚫 BANKNIFTY: High Latency (1219ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:45:23 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+   🚫 BANKNIFTY: High Latency (1207ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:46:23 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+   🚫 BANKNIFTY: High Latency (1207ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:47:23 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:48:23 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:49:23 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+   🚫 BANKNIFTY: High Latency (1103ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:50:24 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:51:25 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+   🚫 BANKNIFTY: High Latency (1460ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:52:25 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+   🚫 BANKNIFTY: High Latency (1417ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:53:25 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:54:25 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+   🚫 BANKNIFTY: High Latency (1005ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:55:26 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:56:26 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:57:27 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:58:27 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 10:59:27 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:00:28 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:01:28 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:02:28 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:03:29 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:04:29 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:05:30 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:06:30 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+   🚫 BANKNIFTY: High Latency (1244ms) - SKIPPING
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:07:31 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:08:31 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:09:32 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   ❌ Update Failed: HTTPConnectionPool(host='localhost', port=8083): Max retries exceeded with url: /api/ai-decision (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8083): Failed to establish a new connection: [Errno 61] Connection refused"))
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:10:32 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+
+────────────────────────────────────────────────────────────
+📊 ANALYSIS @ 11:11:33 IST
+────────────────────────────────────────────────────────────
+✅ Upstox Candles for NIFTY: 375. Last: 25851.35 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 375. Last: 59010.6 @ 1765879140
+✅ Upstox Candles for BANKNIFTY: 13. Last: 59010.6 @ 1765878300
+   BANKNIFTY: OR High: ₹59335 | Low: ₹59087
+   📡 Sending Dashboard Update: 1 positions
+
+💼 Capital: ₹109,300 | Total P&L: ₹+9,300
+   NIFTY: 2 trades | P&L: ₹+0
+   BANKNIFTY: 3 trades | P&L: ₹+9,300
+   📍 NIFTY LONG @ ₹25815
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+   📡 Sending Dashboard Update: 1 positions
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 2 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

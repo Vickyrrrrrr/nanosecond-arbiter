@@ -1,28 +1,51 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { CandlestickData, Time } from 'lightweight-charts';
 
-export function useChartData(symbol: string, interval: string = '1m') {
+export function useChartData(symbol: string, interval: string = '1m', marketType: 'CRYPTO' | 'INDIAN' = 'CRYPTO') {
     const [data, setData] = useState<CandlestickData[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const wsRef = useRef<WebSocket | null>(null);
-    const intervalRef = useRef(interval);
+    const pollIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
+    // Reset data on change
     useEffect(() => {
-        intervalRef.current = interval;
-    }, [interval]);
+        setData([]);
+        setIsLoading(true);
+    }, [symbol, interval, marketType]);
+
+    // Helper to strictly sort and deduplicate data
+    const processData = (rawData: any[]): CandlestickData[] => {
+        if (!rawData || rawData.length === 0) return [];
+
+        // 1. Sort by time ascending
+        const sorted = rawData.sort((a, b) => (a.time as number) - (b.time as number));
+
+        // 2. Deduplicate (keep last occurrence of a timestamp)
+        const unique: CandlestickData[] = [];
+        let lastTime: number | null = null;
+
+        for (const candle of sorted) {
+            const timeVal = candle.time as number;
+            if (timeVal !== lastTime) {
+                unique.push(candle);
+                lastTime = timeVal;
+            } else {
+                // Replace previous with this one (latest update)
+                unique[unique.length - 1] = candle;
+            }
+        }
+
+        return unique;
+    };
 
     useEffect(() => {
         let isMounted = true;
-        setIsLoading(true);
-        setData([]); // Clear old data on symbol OR interval switch
 
-        // 1. Fetch History via REST
-        const fetchHistory = async () => {
+        const fetchCryptoData = async () => {
             try {
-                // Binance API: interval param
+                // Binance API
                 const res = await fetch(`https://api.binance.com/api/v3/klines?symbol=${symbol.toUpperCase()}&interval=${interval}&limit=1000`);
                 const klines = await res.json();
-
                 if (!isMounted) return;
 
                 const formatted: CandlestickData[] = klines.map((k: any) => ({
@@ -33,34 +56,58 @@ export function useChartData(symbol: string, interval: string = '1m') {
                     close: parseFloat(k[4]),
                 }));
 
-                formatted.sort((a, b) => (a.time as number) - (b.time as number));
-
-                setData(formatted);
+                setData(processData(formatted));
                 setIsLoading(false);
-
-                connectWebSocket();
+                connectBinanceWS();
             } catch (err) {
-                console.error("Failed to fetch chart history:", err);
+                console.error("Binance Fetch Error:", err);
                 setIsLoading(false);
             }
         };
 
-        const connectWebSocket = () => {
-            if (wsRef.current) {
-                wsRef.current.close();
-            }
+        const fetchIndianData = async () => {
+            try {
+                // Local API (Proxy to Yahoo via dashboard_server)
+                // Determine days back needed
+                let days = 5;
+                if (interval === '1m' || interval === '5m') days = 5;
+                else if (interval === '15m') days = 10;
+                else if (interval === '1h' || interval.toLowerCase() === '1h') days = 60; // 2 months for 1H
+                else if (interval === '4h' || interval.toLowerCase() === '4h') days = 120; // 4 months for 4H
 
-            // Stream: <symbol>@kline_<interval>
+                const res = await fetch(`/api/market/history?symbol=${symbol}&interval=${interval}&days=${days}`);
+                if (!res.ok) throw new Error("Failed to fetch");
+
+                const json = await res.json();
+                if (!isMounted) return;
+
+                // Backend returns list of { time, open, high, low, close }
+                // They might be unsorted or contain duplicates from live merges
+                const formatted: CandlestickData[] = json.map((k: any) => ({
+                    time: k.time as Time,
+                    open: k.open,
+                    high: k.high,
+                    low: k.low,
+                    close: k.close,
+                }));
+
+                setData(processData(formatted));
+                setIsLoading(false);
+            } catch (err) {
+                console.error("Indian Market Fetch Error:", err);
+                setIsLoading(false);
+            }
+        };
+
+        const connectBinanceWS = () => {
+            if (wsRef.current) wsRef.current.close();
             const wsUrl = `wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}@kline_${interval}`;
             const ws = new WebSocket(wsUrl);
             wsRef.current = ws;
 
-            ws.onopen = () => console.log(`Chart WS Connected: ${symbol} ${interval}`);
-
             ws.onmessage = (event) => {
                 const msg = JSON.parse(event.data);
                 if (msg.e !== 'kline') return;
-
                 const k = msg.k;
                 const candle: CandlestickData = {
                     time: (k.t / 1000) as Time,
@@ -71,27 +118,39 @@ export function useChartData(symbol: string, interval: string = '1m') {
                 };
 
                 setData(prev => {
-                    if (prev.length === 0) return [candle];
-                    const last = prev[prev.length - 1];
-
-                    if ((last.time as number) === (candle.time as number)) {
-                        return [...prev.slice(0, -1), candle];
+                    let newData = prev;
+                    if (prev.length === 0) {
+                        newData = [candle];
                     } else {
-                        return [...prev, candle];
+                        // Optimistically append/update
+                        const last = prev[prev.length - 1];
+                        if ((last.time as number) === (candle.time as number)) {
+                            newData = [...prev.slice(0, -1), candle];
+                        } else {
+                            newData = [...prev, candle];
+                        }
                     }
+                    // RE-RUN PROCESS to ensure safety against out-of-order packets
+                    return processData(newData);
                 });
             };
-
-            ws.onclose = () => console.log(`Chart WS Closed: ${symbol} ${interval}`);
         };
 
-        fetchHistory();
+        // Execution
+        if (marketType === 'CRYPTO') {
+            fetchCryptoData();
+        } else {
+            fetchIndianData();
+            // Poll for Indian data every 1s (Real-time)
+            pollIntervalRef.current = setInterval(fetchIndianData, 1000);
+        }
 
         return () => {
             isMounted = false;
             if (wsRef.current) wsRef.current.close();
+            if (pollIntervalRef.current) clearInterval(pollIntervalRef.current);
         };
-    }, [symbol, interval]); // Re-run on interval change
+    }, [symbol, interval, marketType]);
 
     return { data, isLoading };
 }

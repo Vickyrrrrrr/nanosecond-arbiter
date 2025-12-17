@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { MarketPrice } from '@/types';
 import { ArrowUp, ArrowDown } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 interface PriceCardsProps {
@@ -10,18 +9,29 @@ interface PriceCardsProps {
 }
 
 export function PriceCards({ prices }: PriceCardsProps) {
-    const symbols = ['btcusdt', 'ethusdt', 'solusdt'];
+    const cryptoSymbols = ['btcusdt', 'ethusdt', 'solusdt'];
+    const indianSymbols = ['nifty', 'banknifty'];
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            {symbols.map(sym => (
-                <PriceCard key={sym} symbol={sym} data={prices[sym]} />
-            ))}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            {/* LEFT: CRYPTO SUMMARY (3 Cards) */}
+            <div className="grid grid-cols-3 gap-4">
+                {cryptoSymbols.map(sym => (
+                    <MiniPriceCard key={sym} symbol={sym} data={prices[sym]} type="CRYPTO" />
+                ))}
+            </div>
+
+            {/* RIGHT: INDIAN INDEX SUMMARY (2 Cards) */}
+            <div className="grid grid-cols-2 gap-4">
+                {indianSymbols.map(sym => (
+                    <MiniPriceCard key={sym} symbol={sym} data={prices[sym]} type="INDIAN" />
+                ))}
+            </div>
         </div>
     );
 }
 
-function PriceCard({ symbol, data }: { symbol: string, data?: MarketPrice }) {
+function MiniPriceCard({ symbol, data, type }: { symbol: string, data?: MarketPrice, type: 'CRYPTO' | 'INDIAN' }) {
     const prevPrice = React.useRef(data?.price);
     const [trend, setTrend] = React.useState<'up' | 'down' | 'neutral'>('neutral');
 
@@ -30,59 +40,46 @@ function PriceCard({ symbol, data }: { symbol: string, data?: MarketPrice }) {
             prevPrice.current = data?.price;
             return;
         }
-
         if (data.price > prevPrice.current) setTrend('up');
         else if (data.price < prevPrice.current) setTrend('down');
-
         prevPrice.current = data.price;
-
         const timeout = setTimeout(() => setTrend('neutral'), 1000);
         return () => clearTimeout(timeout);
     }, [data?.price]);
 
-    const displayName = symbol.substring(0, 3).toUpperCase();
+    const displayName = type === 'CRYPTO'
+        ? symbol.substring(0, 3).toUpperCase()
+        : symbol.toUpperCase() === 'NIFTY' ? 'NIFTY 50' : symbol.toUpperCase(); // Update Label for Nifty
+
+    const formatPrice = (p: number) => {
+        if (type === 'CRYPTO') return `$${p.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        return `₹${p.toLocaleString(undefined, { maximumFractionDigits: 0 })}`; // INR usually no decimals for Index
+    };
 
     return (
         <Card className="bg-card/50 backdrop-blur-sm border-white/5 relative overflow-hidden">
             {/* Background Gradient Pulse */}
             <div className={cn(
-                "absolute inset-0 opacity-10 transition-opacity duration-500 pointer-events-none",
+                "absolute inset-0 opacity-10 transition-opacity duration-300 pointer-events-none",
                 trend === 'up' ? "bg-green-500 opacity-20" : trend === 'down' ? "bg-red-500 opacity-20" : "opacity-0"
             )} />
 
-            <CardContent className="p-6 flex justify-between items-center relative z-10">
-                <div>
-                    <div className="flex items-center gap-2 mb-1">
-                        <div className={cn(
-                            "w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs",
-                            symbol.startsWith('btc') ? "bg-orange-500/20 text-orange-500" :
-                                symbol.startsWith('eth') ? "bg-blue-500/20 text-blue-500" :
-                                    "bg-purple-500/20 text-purple-500"
-                        )}>
-                            {displayName[0]}
-                        </div>
-                        <span className="font-semibold text-lg text-muted-foreground">{displayName}</span>
-                    </div>
-
-                    <div className="flex items-baseline gap-2">
-                        <span className={cn(
-                            "text-2xl font-mono font-bold tracking-tight transition-colors duration-300",
-                            trend === 'up' ? "text-green-400" : trend === 'down' ? "text-red-400" : "text-foreground"
-                        )}>
-                            ${data?.price?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) ?? '0.00'}
-                        </span>
+            <CardContent className="p-4 flex flex-col justify-between h-full">
+                <div className="flex justify-between items-start mb-1">
+                    <span className="font-bold text-sm text-muted-foreground">{displayName}</span>
+                    <div className={cn(
+                        "flex items-center text-[10px] font-bold px-1.5 py-0.5 rounded",
+                        (data?.change24h || 0) >= 0 ? "bg-green-500/10 text-green-500" : "bg-red-500/10 text-red-500"
+                    )}>
+                        {(data?.change24h || 0) >= 0 ? '+' : ''}{Math.abs(data?.change24h || 0).toFixed(2)}%
                     </div>
                 </div>
 
                 <div className={cn(
-                    "flex flex-col items-end",
-                    (data?.change24h || 0) >= 0 ? "text-green-500" : "text-red-500"
+                    "text-lg font-mono font-bold tracking-tight transition-colors",
+                    trend === 'up' ? "text-green-400" : trend === 'down' ? "text-red-400" : "text-foreground"
                 )}>
-                    <div className="flex items-center gap-1 font-medium bg-black/20 px-2 py-1 rounded">
-                        {(data?.change24h || 0) >= 0 ? <ArrowUp size={16} /> : <ArrowDown size={16} />}
-                        {Math.abs(data?.change24h || 0).toFixed(2)}%
-                    </div>
-                    <span className="text-xs text-muted-foreground mt-1">24h Change</span>
+                    {data?.price ? formatPrice(data.price) : '---'}
                 </div>
             </CardContent>
         </Card>

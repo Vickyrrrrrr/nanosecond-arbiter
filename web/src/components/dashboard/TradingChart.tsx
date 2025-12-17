@@ -13,14 +13,14 @@ const TIMEFRAMES = [
     { label: '4H', value: '4h' },
 ];
 
-export function TradingChart({ symbol }: { symbol: string }) {
+export function TradingChart({ symbol, marketType = 'CRYPTO' }: { symbol: string, marketType?: 'CRYPTO' | 'INDIAN' }) {
     const chartContainerRef = useRef<HTMLDivElement>(null);
     const chartRef = useRef<IChartApi | null>(null);
     const seriesRef = useRef<ISeriesApi<"Candlestick"> | null>(null);
     const [interval, setInterval] = useState('1m'); // Default
 
     // Pass interval to hook
-    const { data, isLoading } = useChartData(symbol, interval);
+    const { data, isLoading } = useChartData(symbol, interval, marketType);
 
     // Initialize Chart
     useEffect(() => {
@@ -44,9 +44,26 @@ export function TradingChart({ symbol }: { symbol: string }) {
                 timeVisible: true,
                 secondsVisible: false,
                 borderColor: 'rgba(255, 255, 255, 0.1)',
+                // Use IST timezone offset for Indian market (UTC+5:30 = 330 minutes)
+                // Crypto uses local browser timezone by default
+                ...(marketType === 'INDIAN' ? { shiftVisibleRangeOnNewBar: true } : {}),
             },
             rightPriceScale: {
                 borderColor: 'rgba(255, 255, 255, 0.1)',
+            },
+            // Apply timezone offset: IST is UTC+5:30 (19800 seconds)
+            localization: {
+                timeFormatter: marketType === 'INDIAN'
+                    ? (time: number) => {
+                        // Use Intl.DateTimeFormat for robust IST conversion
+                        return new Date(time * 1000).toLocaleTimeString('en-IN', {
+                            timeZone: 'Asia/Kolkata',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: false
+                        });
+                    }
+                    : undefined,
             },
         });
 

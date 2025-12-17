@@ -20,7 +20,7 @@ export function AccountSummary({ data }: { data: TraderState | null }) {
                                 {formatMoney((data?.balance_futures || 0) + (data?.balance_spot || 0))}
                             </p>
                             <span className="text-xs text-muted-foreground">
-                                (F: {formatMoney(data?.balance_futures || 0)} + S: {formatMoney(data?.balance_spot || 0)})
+                                (F: {formatMoney(data?.balance_futures || 0)} + S: {formatMoney(data?.balance_spot || 0)} + 🇮🇳: ₹{(data?.balance_indian || 0).toLocaleString()})
                             </span>
                         </div>
                     </div>
@@ -34,9 +34,14 @@ export function AccountSummary({ data }: { data: TraderState | null }) {
                         <p className="text-xs text-muted-foreground uppercase mb-1 flex items-center gap-1">
                             <Lock size={12} /> Margin Used
                         </p>
-                        <p className="text-2xl font-bold font-mono text-purple-400">
-                            {formatMoney(data?.margin_futures || 0)}
-                        </p>
+                        <div className="flex items-baseline gap-2">
+                            <p className="text-2xl font-bold font-mono text-purple-400">
+                                {formatMoney((data?.margin_futures || 0) + (data?.margin_spot || 0))}
+                            </p>
+                            <span className="text-xs text-muted-foreground">
+                                (F: {formatMoney(data?.margin_futures || 0)} + Crypto: {formatMoney(data?.margin_spot || 0)} + 🇮🇳: ₹{(data?.margin_indian || 0).toLocaleString()})
+                            </span>
+                        </div>
                     </div>
                 </CardContent>
             </Card>

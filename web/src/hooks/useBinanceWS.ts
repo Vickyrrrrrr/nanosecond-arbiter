@@ -51,7 +51,31 @@ export function useBinanceWS() {
 
         connect();
 
+        // POLL OTHER MARKETS (FOREX / INDIAN)
+        const pollOtherMarkets = async () => {
+            try {
+                const res = await fetch('/api/forex/market-data');
+                const data = await res.json();
+                // data format: { "eurusd": { price, change24h, ... }, "nifty": ... }
+
+                setPrices(prev => {
+                    const next = { ...prev };
+                    for (const [key, val] of Object.entries(data)) {
+                        // Cast val to any or MarketPrice
+                        next[key] = val as MarketPrice;
+                    }
+                    return next;
+                });
+            } catch (e) {
+                // Silent fail
+            }
+        };
+
+        const intervalId = setInterval(pollOtherMarkets, 1000);
+        pollOtherMarkets(); // Initial fetch
+
         return () => {
+            clearInterval(intervalId);
             if (wsRef.current) {
                 wsRef.current.close();
             }
