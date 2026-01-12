@@ -1,9 +1,9 @@
 """
-Price Action Trader Bot
-=======================
-Main trading bot implementing Pure Price Action Breakout Strategy.
+Trend Momentum Volatility Trader Bot
+=====================================
+Main trading bot implementing Trend Momentum Volatility Strategy.
 
-NO INDICATORS - ONLY PRICE, STRUCTURE, RANGE.
+Uses EMA (50/100/200), RSI (14), ATR (14), Volume (20)
 
 Usage:
     python price_action_trader.py [--mode spot|futures]
@@ -26,12 +26,18 @@ from dotenv import load_dotenv
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from quant_engine.strategy_price_action import (
-    PriceActionStrategy,
+from quant_engine.strategy_trend_momentum import (
+    TrendMomentumVolatilityStrategy,
     MarketType,
     Direction,
     SignalType,
-    TradeSignal
+    TradeSignal,
+    STRATEGY_NAME,
+    RISK_PER_TRADE,
+    SL_ATR_MULTIPLIER,
+    TP_ATR_MULTIPLIER,
+    BREAKEVEN_ATR,
+    TRAIL_ATR
 )
 
 load_dotenv()
@@ -61,8 +67,8 @@ def get_signature(params: Dict) -> str:
     return hmac.new(API_SECRET.encode(), query_string.encode(), hashlib.sha256).hexdigest()
 
 
-def get_candles(symbol: str, interval: str, limit: int = 100) -> pd.DataFrame:
-    """Fetch candlestick data."""
+def get_candles(symbol: str, interval: str, limit: int = 250) -> pd.DataFrame:
+    """Fetch candlestick data. Need 250 for EMA 200."""
     try:
         url = f"{BINANCE_BASE_URL}/klines"
         params = {'symbol': symbol, 'interval': interval, 'limit': limit}
@@ -138,13 +144,14 @@ def place_order(symbol: str, side: str, quantity: float) -> Optional[Dict]:
 # TRADER BOT
 # ============================================================================
 
-class PriceActionTrader:
+class TrendMomentumTrader:
     """
-    Pure Price Action Trading Bot.
+    Trend Momentum Volatility Trading Bot.
     
-    - NO indicators
-    - Uses ONLY price, structure, volatility
-    - 5m primary, 15m confirmation
+    - Uses EMA 50/100/200 for trend
+    - RSI 14 for momentum
+    - ATR 14 for volatility-based SL/TP
+    - Volume confirmation
     """
     
     def __init__(self, market_type: MarketType = MarketType.SPOT):
@@ -152,7 +159,7 @@ class PriceActionTrader:
         
         # Initialize strategies for each symbol
         self.strategies = {
-            sym: PriceActionStrategy(sym, market_type) for sym in SYMBOLS
+            sym: TrendMomentumVolatilityStrategy(sym, market_type) for sym in SYMBOLS
         }
         
         # Portfolio
@@ -164,24 +171,21 @@ class PriceActionTrader:
         self.wins = 0
         self.losses = 0
         
-        # Trade tracking for time-based exits
-        self.position_candles: Dict[str, int] = {}
-        
         print(f"\n{'='*60}")
-        print(f"⚡ PURE PRICE ACTION TRADER")
+        print(f"⚡ {STRATEGY_NAME} TRADER")
         print(f"{'='*60}")
         print(f"Mode: {market_type.value}")
         print(f"Symbols: {', '.join(SYMBOLS)}")
         print(f"Capital: ${self.balance:,.2f}")
+        print(f"Risk Per Trade: {RISK_PER_TRADE * 100}%")
+        print(f"SL: {SL_ATR_MULTIPLIER}x ATR | TP: {TP_ATR_MULTIPLIER}x ATR")
+        print(f"Breakeven: {BREAKEVEN_ATR}x ATR | Trail: {TRAIL_ATR}x ATR")
         print(f"Interval: {ANALYSIS_INTERVAL}s")
         print(f"{'='*60}\n")
     
-    def fetch_data(self, symbol: str) -> Dict[str, pd.DataFrame]:
-        """Fetch 5m and 15m data for a symbol."""
-        return {
-            "5m": get_candles(symbol, "5m", 50),
-            "15m": get_candles(symbol, "15m", 50)
-        }
+    def fetch_data(self, symbol: str) -> pd.DataFrame:
+        """Fetch 5m data for a symbol (need 250 candles for EMA 200)."""
+        return get_candles(symbol, "5m", 250)
     
     def run_analysis(self):
         """Run analysis cycle."""
@@ -203,28 +207,19 @@ class PriceActionTrader:
                 continue
             
             data = self.fetch_data(symbol)
-            if data["5m"].empty:
+            if data.empty or len(data) < 210:
+                print(f"   ⚪ {symbol}: Not enough data")
                 continue
             
             strategy = self.strategies[symbol]
             signal = strategy.generate_signal(
-                data["5m"],
-                data["15m"] if not data["15m"].empty else None,
-                int(time.time() * 1000)
+                data,
+                account_balance=self.balance,
+                timestamp=int(time.time() * 1000)
             )
             
             if signal:
                 self.execute_signal(signal)
-            else:
-                 # Debug: Check why no signal?
-                 # Assuming strategy.generate_signal has internal logic, but we can't see it.
-                 # Actually, strategy returns None.
-                 # Let's trust strategy prints if any, but we should add a generic print if silent.
-                 # But we can't inspect "why" easily without modifying strategy.
-                 # However, verify fetch data happened.
-                 pass # strategy logic is opaque here without modifying strategy.py.
-                 # To debug, we will modify strategy_price_action.py instead.
-                 print(f"   ⚪ {symbol}: No Signal")
         
         # Update dashboard
         self.update_dashboard()
@@ -235,29 +230,22 @@ class PriceActionTrader:
     def execute_signal(self, signal: TradeSignal):
         """Execute a trade signal."""
         print(f"\n🎯 {signal.signal_type.value} on {signal.symbol}")
-        print(f"   Breakout Level: ${signal.breakout_level:.2f}")
         print(f"   Entry: ${signal.entry_price:.2f}")
         print(f"   Stop: ${signal.stop_loss:.2f}")
         print(f"   Target: ${signal.take_profit:.2f}")
+        print(f"   RSI: {signal.rsi:.1f} | ATR: ${signal.atr:.2f}")
+        print(f"   Volume: {signal.volume_ratio:.1f}x avg")
         
-        # Calculate size
-        strategy = self.strategies[signal.symbol]
-        size = strategy.calculate_position_size(
-            self.balance,
-            signal.entry_price,
-            signal.stop_loss
-        )
+        size = signal.position_size
         
         if size <= 0:
             print("   ❌ Size too small")
             return
         
-        
         # Check Daily Limits
-        from datetime import datetime
         today_str = datetime.now().strftime('%Y-%m-%d')
         if not hasattr(self, 'daily_trades'):
-             self.daily_trades = {} # { "2023-10-27|BTCUSDT": 0 }
+             self.daily_trades = {}
         
         daily_key = f"{today_str}|{signal.symbol}"
         count = self.daily_trades.get(daily_key, 0)
@@ -277,9 +265,9 @@ class PriceActionTrader:
                 "sl": signal.stop_loss,
                 "tp": signal.take_profit,
                 "direction": signal.direction,
-                "breakout": signal.breakout_level
+                "atr": signal.atr,
+                "breakeven_hit": False
             }
-            self.position_candles[signal.symbol] = 0
             self.trades += 1
             
             # Increment Daily Count
@@ -288,42 +276,59 @@ class PriceActionTrader:
             print(f"   ✅ EXECUTED: {side} {size:.6f}")
     
     def check_exits(self):
-        """Check positions for exit conditions."""
+        """Check positions for exit conditions with trailing stop logic."""
         for symbol in list(self.positions.keys()):
             pos = self.positions[symbol]
             
-            # Get current price
+            # Get current price and ATR
             data = self.fetch_data(symbol)
-            if data["5m"].empty:
+            if data.empty:
                 continue
             
-            current = data["5m"]['close'].iloc[-1]
-            
-            # Increment candle count
-            self.position_candles[symbol] = self.position_candles.get(symbol, 0) + 1
+            current = data['close'].iloc[-1]
+            strategy = self.strategies[symbol]
+            current_atr = strategy.calculate_atr(data).iloc[-1]
             
             should_exit = False
             pnl = 0.0
             reason = ""
             
+            # Update trailing stop
             if pos["direction"] == Direction.LONG:
-                # Stop loss
+                # Check breakeven
+                breakeven_level = pos["entry"] + (pos["atr"] * BREAKEVEN_ATR)
+                if not pos["breakeven_hit"] and current >= breakeven_level:
+                    pos["sl"] = pos["entry"]
+                    pos["breakeven_hit"] = True
+                    print(f"   🔒 {symbol} LONG: Breakeven activated")
+                
+                # Trailing stop
+                trail_stop = current - (current_atr * TRAIL_ATR)
+                pos["sl"] = max(pos["sl"], trail_stop)
+                
+                # Check exit
                 if current <= pos["sl"]:
                     should_exit = True
                     reason = "STOP LOSS"
                     pnl = (current - pos["entry"]) * pos["qty"]
-                # Take profit
                 elif current >= pos["tp"]:
                     should_exit = True
                     reason = "TAKE PROFIT"
                     pnl = (current - pos["entry"]) * pos["qty"]
-                # Time exit
-                elif self.position_candles[symbol] >= 8:
-                    should_exit = True
-                    reason = "TIME EXIT"
-                    pnl = (current - pos["entry"]) * pos["qty"]
             
             else:  # SHORT
+                # Check breakeven
+                breakeven_level = pos["entry"] - (pos["atr"] * BREAKEVEN_ATR)
+                if not pos["breakeven_hit"] and current <= breakeven_level:
+                    pos["sl"] = pos["entry"]
+                    pos["breakeven_hit"] = True
+                    print(f"   🔒 {symbol} SHORT: Breakeven activated")
+                
+                # Trailing stop
+                trail_stop = current + (current_atr * TRAIL_ATR)
+                pos["sl"] = min(pos["sl"], trail_stop)
+                
+                # Check exit
                 if current >= pos["sl"]:
                     should_exit = True
                     reason = "STOP LOSS"
@@ -331,10 +336,6 @@ class PriceActionTrader:
                 elif current <= pos["tp"]:
                     should_exit = True
                     reason = "TAKE PROFIT"
-                    pnl = (pos["entry"] - current) * pos["qty"]
-                elif self.position_candles[symbol] >= 8:
-                    should_exit = True
-                    reason = "TIME EXIT"
                     pnl = (pos["entry"] - current) * pos["qty"]
             
             if should_exit:
@@ -348,15 +349,9 @@ class PriceActionTrader:
                     print(f"✅ WIN: {reason} {symbol} +${pnl:.2f}")
                 else:
                     self.losses += 1
-                    # Cooldown: Skip next 2 signals (User Rule)
-                    # Note: activate_cooldown(2) essentially blocks the next 2 generate_signal calls that would return true,
-                    # or blocks analysis for 2 intervals depending on implementation. 
-                    # Strategy uses 'candles' countdown. So we skip next 2 candles of analysis.
-                    self.strategies[symbol].activate_cooldown(2) 
                     print(f"❌ LOSS: {reason} {symbol} ${pnl:.2f}")
                 
                 del self.positions[symbol]
-                del self.position_candles[symbol]
     
     def update_dashboard(self):
         """Send update to dashboard."""
@@ -364,9 +359,9 @@ class PriceActionTrader:
             payload = {
                 "balance_spot": self.balance,
                 "pnl_spot": self.total_pnl,
-                "signal": "PRICE_ACTION",
+                "signal": STRATEGY_NAME,
                 "confidence": 90,
-                "reasoning": f"Pure Price Action | {self.market_type.value}",
+                "reasoning": f"Trend Momentum Volatility | {self.market_type.value}",
                 "positions": {
                     sym: {
                         "symbol": sym,
@@ -389,7 +384,7 @@ class PriceActionTrader:
         
         if self.positions:
             for sym, p in self.positions.items():
-                print(f"   📍 {sym} {p['direction'].value} @ ${p['entry']:.2f}")
+                print(f"   📍 {sym} {p['direction'].value} @ ${p['entry']:.2f} (SL: ${p['sl']:.2f})")
         else:
             print("   ⚪ No positions")
         
@@ -416,13 +411,13 @@ class PriceActionTrader:
 def main():
     import argparse
     
-    parser = argparse.ArgumentParser(description="Pure Price Action Trader")
+    parser = argparse.ArgumentParser(description="Trend Momentum Volatility Trader")
     parser.add_argument("--mode", choices=["spot", "futures"], default="spot")
     args = parser.parse_args()
     
     market_type = MarketType.SPOT if args.mode == "spot" else MarketType.FUTURES
     
-    trader = PriceActionTrader(market_type)
+    trader = TrendMomentumTrader(market_type)
     trader.run()
 
 

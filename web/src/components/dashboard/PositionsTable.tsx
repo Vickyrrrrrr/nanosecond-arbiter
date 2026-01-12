@@ -37,11 +37,8 @@ export function PositionsTable({ positions, title = "Active Positions" }: { posi
                                 </TableRow>
                             ) : (
                                 positionList.filter(p => p && p.symbol).map((pos) => {
-                                    const isIndian = ["NIFTY", "BANKNIFTY", "nifty", "banknifty"].includes(pos.symbol.toUpperCase());
-                                    const currencySymbol = isIndian ? '₹' : '$';
-                                    const displayName = pos.symbol.toUpperCase() === 'NIFTY' ? 'NIFTY 50' : pos.symbol.toUpperCase();
-
-                                    // Fail-safe highlighting could be added here if market data was live in this component
+                                    const currencySymbol = '$';
+                                    const displayName = pos.symbol.toUpperCase().replace('USDT', '');
 
                                     return (
                                         <motion.tr

@@ -20,7 +20,7 @@ export function AccountSummary({ data }: { data: TraderState | null }) {
                                 {formatMoney((data?.balance_futures || 0) + (data?.balance_spot || 0))}
                             </p>
                             <span className="text-xs text-muted-foreground">
-                                (F: {formatMoney(data?.balance_futures || 0)} + S: {formatMoney(data?.balance_spot || 0)} + 🇮🇳: ₹{(data?.balance_indian || 0).toLocaleString()})
+                                (F: {formatMoney(data?.balance_futures || 0)} + S: {formatMoney(data?.balance_spot || 0)})
                             </span>
                         </div>
                     </div>
@@ -39,7 +39,7 @@ export function AccountSummary({ data }: { data: TraderState | null }) {
                                 {formatMoney((data?.margin_futures || 0) + (data?.margin_spot || 0))}
                             </p>
                             <span className="text-xs text-muted-foreground">
-                                (F: {formatMoney(data?.margin_futures || 0)} + Crypto: {formatMoney(data?.margin_spot || 0)} + 🇮🇳: ₹{(data?.margin_indian || 0).toLocaleString()})
+                                (F: {formatMoney(data?.margin_futures || 0)} + S: {formatMoney(data?.margin_spot || 0)})
                             </span>
                         </div>
                     </div>

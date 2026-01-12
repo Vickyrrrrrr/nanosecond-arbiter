@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { MarketPrice } from '@/types';
-import { ArrowUp, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface PriceCardsProps {
@@ -10,28 +9,17 @@ interface PriceCardsProps {
 
 export function PriceCards({ prices }: PriceCardsProps) {
     const cryptoSymbols = ['btcusdt', 'ethusdt', 'solusdt'];
-    const indianSymbols = ['nifty', 'banknifty'];
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            {/* LEFT: CRYPTO SUMMARY (3 Cards) */}
-            <div className="grid grid-cols-3 gap-4">
-                {cryptoSymbols.map(sym => (
-                    <MiniPriceCard key={sym} symbol={sym} data={prices[sym]} type="CRYPTO" />
-                ))}
-            </div>
-
-            {/* RIGHT: INDIAN INDEX SUMMARY (2 Cards) */}
-            <div className="grid grid-cols-2 gap-4">
-                {indianSymbols.map(sym => (
-                    <MiniPriceCard key={sym} symbol={sym} data={prices[sym]} type="INDIAN" />
-                ))}
-            </div>
+        <div className="grid grid-cols-3 gap-4 mb-6">
+            {cryptoSymbols.map(sym => (
+                <MiniPriceCard key={sym} symbol={sym} data={prices[sym]} />
+            ))}
         </div>
     );
 }
 
-function MiniPriceCard({ symbol, data, type }: { symbol: string, data?: MarketPrice, type: 'CRYPTO' | 'INDIAN' }) {
+function MiniPriceCard({ symbol, data }: { symbol: string, data?: MarketPrice }) {
     const prevPrice = React.useRef(data?.price);
     const [trend, setTrend] = React.useState<'up' | 'down' | 'neutral'>('neutral');
 
@@ -47,13 +35,10 @@ function MiniPriceCard({ symbol, data, type }: { symbol: string, data?: MarketPr
         return () => clearTimeout(timeout);
     }, [data?.price]);
 
-    const displayName = type === 'CRYPTO'
-        ? symbol.substring(0, 3).toUpperCase()
-        : symbol.toUpperCase() === 'NIFTY' ? 'NIFTY 50' : symbol.toUpperCase(); // Update Label for Nifty
+    const displayName = symbol.substring(0, 3).toUpperCase();
 
     const formatPrice = (p: number) => {
-        if (type === 'CRYPTO') return `$${p.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        return `₹${p.toLocaleString(undefined, { maximumFractionDigits: 0 })}`; // INR usually no decimals for Index
+        return `$${p.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     };
 
     return (
